@@ -5,6 +5,23 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-08] build | GoldBreakoutHunter EA (verified-strategy research)
+
+- Researched the most credible public gold strategies: **Marci Silfrain**
+  (world #2 prop-firm leaderboard, verified +1,574% on gold over 3 years,
+  trendline-pullback + measured-move) and the **Gold Prop Firm Robot**
+  (verified live: 190% growth, 71.7% win rate, 2.47 PF over 16 months,
+  breakout style).
+- Built `GoldBreakoutHunter_Zaid.mq5` (magic 20260915): Donchian 20-bar
+  breakout entry + EMA50 trend filter + ATR-based SL + measured-move TP
+  (RR 2.0). Reuses the proven risk scaffolding from the other bots: kill
+  switch (+$10/−$5), daily cutoff (23:59 test), 2 trades/day cap.
+- Compiled **0 errors / 0 warnings**, deployed to MT5 Experts folder.
+- Wrote `entities/goldbreakouthunter.md`; updated `index.md`.
+- Context: user asked for a BTC and USD bot built from the "craziest trader"
+  found by scraping their last year of trade history; this gold breakout bot
+  is the first concrete build from that verified-strategy research.
+
 ## [2026-09-08] guide | Setup & Usage page
 
 - Wrote `wiki/setup.md` — full onboarding page: what the repo is (LLM Wiki

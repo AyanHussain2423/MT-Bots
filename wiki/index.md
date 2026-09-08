@@ -33,6 +33,9 @@ and strategy research. Every trade is ingested and linted.
   and real 83160890 (MT5 4, "Gold.i#", Ultra Low Standard).
 - [[GoldHunterPro Small]] — the live EA: RSI+EMA+ATR M1 scalper, magic
   20260910, kill switch, 18:30 daily cutoff.
+- [[GoldBreakoutHunter]] — demo EA built from verified strategies (Marci
+  Silfrain + Gold Prop Firm Robot): Donchian breakout + EMA50 trend filter,
+  magic 20260915, 2 trades/day cap.
 - [[Adeel Asghar]] — the trader behind AMN Trading.
 
 ## Concepts
