@@ -5,6 +5,17 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-08] guide | Setup & Usage page
+
+- Wrote `wiki/setup.md` — full onboarding page: what the repo is (LLM Wiki
+  pattern, three layers), prerequisites, first-time setup (clone,
+  authenticate via GCM/PAT/SSH, identity), the daily workflow (ingest a
+  trade session, query, lint), page conventions, trading data reference
+  (CSV columns, accounts, bot), safety rules, troubleshooting.
+- Added "Version control rule" to `AGENTS.md`: **commit and push every wiki
+  change at least once per day** (human directive).
+- Updated `index.md` (new Guides section) and this log.
+
 ## [2026-09-08] ingest | First real-account session (GoldHunterPro_Small)
 
 - Migrated the AMN strategy wiki from the local knowledge base

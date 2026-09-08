@@ -12,6 +12,12 @@ and strategy research. Every trade is ingested and linted.
 
 ---
 
+## Guides
+
+- [[Setup & Usage]] — how to set up this repo (clone, authenticate, identity)
+  and use it (ingest a trade session, query, lint). Start here if you are
+  new to the repo.
+
 ## Sources
 
 - [[2026-09-08 Real Session]] — first real-account session of

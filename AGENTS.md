@@ -103,6 +103,15 @@ Report findings with suggestions for new questions/sources.
 `wiki/index.md` must always reflect every page. If you create, rename, or
 delete a page, update `index.md` in the same pass.
 
+## Version control rule
+
+**Commit and push every wiki change to git at least once per day.** Prefer
+committing with each change batch (ingest, query filing, lint fixes) so the
+history stays granular. Never leave uncommitted wiki changes overnight. The
+remote is `https://github.com/zaidayub143-cmd/Trader-knowledge.git`
+(branch `main`). Credentials live in the local Git Credential Manager —
+never in the repo.
+
 ## Golden rule
 
 The human decided: **raw sources are immutable; the wiki is yours to maintain;
