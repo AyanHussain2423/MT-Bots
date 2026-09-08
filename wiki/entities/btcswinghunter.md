@@ -41,7 +41,7 @@ builds positions with many small limit orders, holds for **days**, uses
 tight risk management, and takes **3–7% moves** with a very high win rate.
 The edge comes from patient limit-order accumulation and letting winners run.
 
-## Configuration (as deployed 2026-09-08)
+## Configuration (as deployed 2026-09-08, v2.00)
 
 | Setting | Value |
 |---|---|
@@ -57,12 +57,20 @@ The edge comes from patient limit-order accumulation and letting winners run.
 | Kill switch | +$50 profit / −$25 loss |
 | Trailing stop | 2.0 × ATR (optional, on by default) |
 
+> [!note] v2.00 changes (2026-09-08)
+> - **Looser entries**: RSI pullback threshold 45 → 50 (BUY), overbought
+>   55 → 50 (SELL); price proximity to H1 EMA21 widened 0.2% → 0.5%.
+> - **Status prints**: prints `BSH status | H4trend | RSI | price/EMA21 |
+>   buySig/sellSig` every H1 bar so we can see what it's waiting for.
+> - Deployed under a new file name (`BTCSwingHunter_Zaid_v2`) to avoid the
+>   MT5 stale-`.ex5` cache problem that caused the gold bot flood.
+
 ## Strategy logic
 
 - **Trend filter (H4)**: only BUY above H4 EMA50, only SELL below H4 EMA50.
 - **Pullback entry (H1)**: in an uptrend, BUY when price pulls back to the
-  H1 EMA21 and RSI is not overbought (< 45). In a downtrend, SELL when price
-  rallies to H1 EMA21 and RSI is not oversold (> 55).
+  H1 EMA21 and RSI is not overbought (< 50). In a downtrend, SELL when price
+  rallies to H1 EMA21 and RSI is not oversold (> 50).
 - **Swing holding**: no intraday bar limit — positions are held for days,
   managed by SL/TP and an optional trailing stop.
 - **No daily cutoff** that force-closes positions (that would kill swing
@@ -81,6 +89,7 @@ The edge comes from patient limit-order accumulation and letting winners run.
 | Date | Change |
 |---|---|
 | 2026-09-08 | Created from Paul Wei's public BitMEX trade-history analysis. Compiled 0 errors/0 warnings, deployed to MT5 Experts. |
+| 2026-09-08 | **v2.00**: looser entries (RSI 45→50 / 55→50, proximity 0.2%→0.5%), H1-bar status prints, redeployed as `BTCSwingHunter_Zaid_v2`. |
 
 ## Related
 

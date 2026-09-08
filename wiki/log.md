@@ -5,6 +5,39 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-08] incident | GoldBreakoutHunter flood (1156 deals) + v2.00 flood-proof rewrite
+
+- **Incident**: GoldBreakoutHunter flooded the demo account — **1,156 deals**
+  in ~30 minutes (order range 2165927xxx → 2165979xxx). Pattern: alternating
+  buy/sell pairs every ~200ms at the same prices (buy at ask / sell at bid,
+  spread apart), no SL/TP on the flood orders. User had to disable
+  auto-trading twice (22:27, 22:55, 23:15) to stop it.
+- **Root cause**: the running `.ex5` was a **stale cached build** — MT5 kept
+  executing an old in-memory version even after the source was fixed and
+  recompiled. The old build had a buy→close→buy loop that burned the spread
+  every cycle; when auto-trading was disabled mid-loop it failed with
+  **error 10027** (AutoTrading disabled by client) trying to close.
+- **Fix 1 (code)**: rewrote `GoldBreakoutHunter_Zaid.mq5` → **v2.00** with
+  four hard gates: 1 trade per M1 bar, 15-min cooldown, max 1 concurrent
+  position (no hedging), max 4 trades/day. SL/TP always set. Compiled
+  0 errors/0 warnings.
+- **Fix 2 (deployment)**: renamed the EA to **`GoldBreakoutHunter_Zaid_v2`**
+  — a new file name forces MT5 to load fresh code (no cache possible).
+  Same for BTC bot → `BTCSwingHunter_Zaid_v2`.
+- **Cleanup**: wrote `CloseAllPositions.mq5` script (closes every open
+  position on the account, any symbol/magic). Ran on GOLD + BTCUSD charts:
+  `0 closed, 0 failed, 0 remaining` — account fully clean.
+- **BTC bot visibility**: `BTCSwingHunter_Zaid_v2` now prints a status line
+  every H1 bar (`BSH status | H4trend | RSI | price/EMA21 | buySig/sellSig`)
+  so we can see what it's waiting for. First status: H4trend DOWN, RSI 46.4,
+  price/EMA21 0.9986 — waiting for RSI > 50 for a SELL in the downtrend.
+- **Lesson**: recompiling an EA does NOT update a running instance — MT5
+  caches the loaded `.ex5` in memory. After any code change, either restart
+  MT5 or rename the EA so the new binary is loaded fresh.
+- Both v2 bots verified running: `GoldBreakoutHunter v2.00 initialized`
+  (GOLD,M5) and `BTCSwingHunter initialized` (BTCUSD,M1). 0 deals since
+  re-attach.
+
 ## [2026-09-08] build | BTCSwingHunter EA (Paul Wei trade-history analysis)
 
 - Scraped and analyzed **Paul Wei** (`@coolish`, BitMEX Hall of Legends,

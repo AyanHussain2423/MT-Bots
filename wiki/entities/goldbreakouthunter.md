@@ -21,7 +21,7 @@ credible approaches found in research:
 Source: `D:\Workspace\Trader-knowledge\GoldBreakoutHunter_Zaid.mq5` (also
 deployed to the MT5 Experts folder).
 
-## Configuration (as deployed 2026-09-08)
+## Configuration (as deployed 2026-09-08, v2.00)
 
 | Setting | Value |
 |---|---|
@@ -33,10 +33,20 @@ deployed to the MT5 Experts folder).
 | ATR | 14 |
 | SL | max(2.0 × ATR(14), 300 points) |
 | TP | 2.0 × SL distance (RR 2.0) |
-| Max concurrent trades | 2 |
-| Max trades per day | 2 |
+| Max concurrent positions | **1** (no hedging possible) |
+| Max trades per day | **4** |
+| Cooldown between trades | **15 minutes** |
 | Kill switch | +$10 profit / −$5 loss |
 | Daily cutoff | 23:59 local (test setting) |
+
+> [!warning] v2.00 flood-proof rewrite (2026-09-08)
+> The original build flooded the demo account with **1,156 deals** in ~30
+> minutes (alternating buy/sell pairs, no SL/TP) because MT5 kept running a
+> **stale cached `.ex5`** of an older broken build. v2.00 adds four hard
+> gates — 1 trade per M1 bar, 15-min cooldown, max 1 concurrent position,
+> max 4 trades/day — and is deployed under a **new file name**
+> (`GoldBreakoutHunter_Zaid_v2`) so MT5 cannot load the old cached binary.
+> See [[2026-09-08 Flood Incident]] in the log.
 
 ## Strategy logic
 
@@ -65,6 +75,7 @@ deployed to the MT5 Experts folder).
 | Date | Change |
 |---|---|
 | 2026-09-08 | Created from verified-strategy research (Marci Silfrain + Gold Prop Firm Robot). Compiled 0 errors/0 warnings, deployed to MT5 Experts. |
+| 2026-09-08 | **v2.00 flood-proof rewrite** after a 1,156-deal flood incident: 1 trade per M1 bar, 15-min cooldown, max 1 position, max 4 trades/day. Redeployed as `GoldBreakoutHunter_Zaid_v2` (new name = fresh binary, no MT5 cache). |
 
 ## Related
 
