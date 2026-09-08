@@ -8,6 +8,11 @@ sources: [raw/trades/2026-09-08-real-account.csv]
 
 # GoldHunterPro Small
 
+> [!warning] Retired from tracking (2026-09-09)
+> User decision: **no longer tracked** — the bot had bad logic, bought too
+> much garbage, and broke. Removed from the live bot set. The tracked set is
+> now [[GoldBreakoutHunter]] (v3) + [[BTCSwingHunter]] (v2).
+
 The live Expert Advisor (EA) running on the real account. An M1 gold
 scalper built on RSI + EMA + ATR with hard risk guards. Source:
 `C:\Users\Supertails PRM\Desktop\GoldHunterPro_Zaid_Small.mq5`.

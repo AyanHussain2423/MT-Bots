@@ -36,6 +36,9 @@ wiki. Newest entries go at the top.
   commission. Gold 0.01 lot ≈ $0.30–0.50/trade spread (~$36–60/month at
   120 trades); Micro 0.001 lot ≈ $4–6/month. BTC swap ~$0.10–0.20/night
   held — the swing bot's hidden cost.
+- **Tracked set decision**: records kept for **GoldBreakoutHunter v3** and
+  **BTCSwingHunter v2** only. **GoldHunterPro Small retired** from tracking
+  (user: bad logic, bought too much garbage, broke). Entity page flagged.
 - **$100-account math**: RR 2.0 needs >33% win rate to break even. Micro on
   $100 ≈ −$10 to +$5/month realistic; 0.01 lot ≈ −$50 to +$50/month before
   spread. Recommendation: Micro + −$5/day kill switch + 2-week live track

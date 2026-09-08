@@ -84,6 +84,17 @@ The edge comes from patient limit-order accumulation and letting winners run.
   **+$50 profit** or **−$25 loss**.
 - **1 concurrent position**, **3 new trades/day** max.
 
+## Live results
+
+| Date | Trade | Entry | SL | TP | Exit | Result |
+|---|---|---|---|---|---|---|
+| — | none yet | — | — | — | — | 0 trades as of 2026-09-09 |
+
+No trades yet — swing bot waiting for its pullback setup (H4 trend + H1
+EMA21 pullback + RSI). Status prints once per H1 bar:
+`BSH status | H4trend | RSI | price/EMA21 | buySig/sellSig`. Patient by
+design: Paul Wei's style holds days and trades rarely.
+
 ## Version history
 
 | Date | Change |

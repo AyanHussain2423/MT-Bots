@@ -31,8 +31,8 @@ and strategy research. Every trade is ingested and linted.
 
 - [[XM Accounts]] — the two XM accounts: demo 334640751 (MT5 9, "GOLD")
   and real 83160890 (MT5 4, "Gold.i#", Ultra Low Standard).
-- [[GoldHunterPro Small]] — the live EA: RSI+EMA+ATR M1 scalper, magic
-  20260910, kill switch, 18:30 daily cutoff.
+- [[GoldHunterPro Small]] — M1 gold scalper (RSI+EMA+ATR, magic 20260910).
+  **Retired from tracking 2026-09-09** (bad logic, bought garbage, broke).
 - [[GoldBreakoutHunter]] — demo EA built from verified strategies (Marci
   Silfrain + Gold Prop Firm Robot): Donchian breakout + EMA50 trend filter,
   magic 20260915, v3.00 flood-proof (1 trade/M1 bar, 15-min cooldown, max 1
@@ -40,7 +40,8 @@ and strategy research. Every trade is ingested and linted.
   4367.52 → TP 4359.16).
 - [[BTCSwingHunter]] — demo BTC/USD swing EA built from Paul Wei's public
   BitMEX trade history (93.8% win rate, holds days): H4 trend + H1 pullback,
-  magic 20260916, v2.00 with status prints.
+  magic 20260916, v2.00 with status prints. 0 trades so far (patient by
+  design).
 - [[Adeel Asghar]] — the trader behind AMN Trading.
 
 ## Concepts
