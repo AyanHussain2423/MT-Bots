@@ -5,6 +5,42 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-09] session | GoldBreakoutHunter FIRST LIVE WIN (+$8.36) + manual-trade "flood" false alarm
+
+- **First real breakout trade**: `GoldBreakoutHunter_Zaid_v3` (GOLD,M15)
+  sold at **4367.52** (00:50:01) — price broke the 20-bar box bottom
+  (4367.58), DistLo went negative (−0.07), trend DOWN. SL 4371.57, TP
+  4359.38, breakout level 4367.58.
+- **WIN**: closed **01:28:58 at 4359.16** (TP hit, filled better than the
+  4359.38 target) → **+$8.36** in ~39 minutes. RR 2.0 reward captured in
+  full. First verified live trade for the breakout strategy.
+- **"Flood" false alarm**: ~00:22 the user manually traded sell/buy pairs
+  (no SL/TP on those orders — bots always set SL/TP, manual trades don't).
+  Confirmed manual, not a bot flood. All EA sources re-reviewed and clean:
+  v3, BTCSwingHunter_v2, GoldHunterPro Small/Micro, AMNSweepHunter
+  Loose/Strict — every one has per-bar gates + position caps. The old flood
+  bug is gone.
+- **Kill switch fired at −11.32** (00:28:43) — v3 had traded 4× earlier
+  (2 sells 00:10 + 2 buys 00:18 from dual M5+M15 instances) and lost.
+  Loss limit raised **−$5 → −$50** so the bot could trade the rest of the
+  day; recompiled 0 errors, re-attached fresh.
+- **Chasing-channel lesson**: at 00:49 the box bottom (4369.14) chased price
+  down to 4367.75 as new M1 bars made new lows — price broke the old box
+  bottom but the breakout "vanished". In strong trends the 20-bar channel
+  follows price; candidate fix = v4 trend-continuation entry (sell on break
+  of previous M1 bar's low in a downtrend). Offered, not yet built.
+- **BTC bot**: swing design confirmed patient by design (H4 trend + H1
+  pullback + RSI, holds days). Status prints once per H1 bar; log file lags
+  the Experts tab. No BTC trades yet.
+- **Broker-cost analysis**: XM standard account = spread + swap only, no
+  commission. Gold 0.01 lot ≈ $0.30–0.50/trade spread (~$36–60/month at
+  120 trades); Micro 0.001 lot ≈ $4–6/month. BTC swap ~$0.10–0.20/night
+  held — the swing bot's hidden cost.
+- **$100-account math**: RR 2.0 needs >33% win rate to break even. Micro on
+  $100 ≈ −$10 to +$5/month realistic; 0.01 lot ≈ −$50 to +$50/month before
+  spread. Recommendation: Micro + −$5/day kill switch + 2-week live track
+  to measure the real win rate before scaling.
+
 ## [2026-09-08] incident | GoldBreakoutHunter flood (1156 deals) + v2.00 flood-proof rewrite
 
 - **Incident**: GoldBreakoutHunter flooded the demo account — **1,156 deals**

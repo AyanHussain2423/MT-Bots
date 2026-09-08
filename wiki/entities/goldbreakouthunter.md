@@ -36,7 +36,7 @@ deployed to the MT5 Experts folder).
 | Max concurrent positions | **1** (no hedging possible) |
 | Max trades per day | **4** |
 | Cooldown between trades | **15 minutes** |
-| Kill switch | +$10 profit / −$5 loss |
+| Kill switch | +$10 profit / −$50 loss (raised from −$5 on 2026-09-09) |
 | Daily cutoff | 23:59 local (test setting) |
 
 > [!warning] v2.00 flood-proof rewrite (2026-09-08)
@@ -70,12 +70,24 @@ deployed to the MT5 Experts folder).
   orders, and stops for the day.
 - **2 trades/day cap** — added because the earlier bots traded too often.
 
+## Live results
+
+| Date | Trade | Entry | SL | TP | Exit | Result |
+|---|---|---|---|---|---|---|
+| 2026-09-09 | SELL (box-bottom break, trend DOWN) | 4367.52 | 4371.57 | 4359.38 | 4359.16 (TP hit, 01:28:58) | **+$8.36** ✅ |
+
+First verified live trade for the breakout strategy: sold when price broke
+the 20-bar box bottom (DistLo −0.07), price fell $8, TP captured in ~39
+minutes. RR 2.0 reward in full.
+
 ## Version history
 
 | Date | Change |
 |---|---|
 | 2026-09-08 | Created from verified-strategy research (Marci Silfrain + Gold Prop Firm Robot). Compiled 0 errors/0 warnings, deployed to MT5 Experts. |
 | 2026-09-08 | **v2.00 flood-proof rewrite** after a 1,156-deal flood incident: 1 trade per M1 bar, 15-min cooldown, max 1 position, max 4 trades/day. Redeployed as `GoldBreakoutHunter_Zaid_v2` (new name = fresh binary, no MT5 cache). |
+| 2026-09-08 | **v3.00** — renamed again (`GoldBreakoutHunter_Zaid_v3`) to force a fresh binary; M1-bar status prints (`GBH status | Bid | Range | DistHi/DistLo | Trend | buyBreak/sellBreak`). |
+| 2026-09-09 | **First live win +$8.36** (SELL 4367.52 → TP 4359.16). Kill-switch loss limit raised −$5 → −$50 after the day's earlier losses (−11.32) kept re-triggering it. |
 
 ## Related
 
