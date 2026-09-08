@@ -5,6 +5,26 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-08] build | BTCSwingHunter EA (Paul Wei trade-history analysis)
+
+- Scraped and analyzed **Paul Wei** (`@coolish`, BitMEX Hall of Legends,
+  70x BTC return over 3 years) via the public
+  `omgbbqhaxx/BTC-Trading-Since-2020` repo (43k+ orders, 173k+ executions).
+- Analyzed the last year (2025-04 → 2026-04) of his XBTUSD ledger: 16 round
+  trips, **93.8% win rate**, avg +3.68% per trade, holds days (median ~5d),
+  balanced long/short, ~97% limit orders building positions.
+- Built `BTCSwingHunter_Zaid.mq5` (magic 20260916): H4 EMA50 trend filter +
+  H1 EMA21/RSI pullback entry, ATR SL, RR 2.5, trailing stop, kill switch
+  (+$50/−$25), 1 concurrent position, 3 new trades/day. No daily cutoff
+  (swing trades must be allowed to run for days).
+- Fixed enum compile errors (timeframe inputs changed `int` →
+  `ENUM_TIMEFRAMES`). Compiled **0 errors / 0 warnings**, deployed to MT5
+  Experts.
+- Wrote `entities/btcswinghunter.md`; updated `index.md`.
+- Also fixed `GoldBreakoutHunter_Zaid.mq5`: removed the once-per-M1-bar gate
+  so breakouts are checked on every tick (was missing fast breakouts).
+  Recompiled clean, redeployed.
+
 ## [2026-09-08] build | GoldBreakoutHunter EA (verified-strategy research)
 
 - Researched the most credible public gold strategies: **Marci Silfrain**

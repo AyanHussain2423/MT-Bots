@@ -36,6 +36,9 @@ and strategy research. Every trade is ingested and linted.
 - [[GoldBreakoutHunter]] — demo EA built from verified strategies (Marci
   Silfrain + Gold Prop Firm Robot): Donchian breakout + EMA50 trend filter,
   magic 20260915, 2 trades/day cap.
+- [[BTCSwingHunter]] — demo BTC/USD swing EA built from Paul Wei's public
+  BitMEX trade history (93.8% win rate, holds days): H4 trend + H1 pullback,
+  magic 20260916.
 - [[Adeel Asghar]] — the trader behind AMN Trading.
 
 ## Concepts

@@ -1,0 +1,102 @@
+---
+title: BTCSwingHunter
+type: entity
+tags: [trading, ea, mql5, btc, bitcoin, swing, bot]
+date: 2026-09-08
+sources: [github-omgbbqhaxx-btc-trading-since-2020]
+---
+
+# BTCSwingHunter
+
+A demo-account Expert Advisor (EA) for BTC/USD built from the **public trade
+history of Paul Wei** (`@coolish`), a BitMEX Hall of Legends trader with a
+**70x Bitcoin return over 3 years**. His full 2020–2026 execution ledger is
+mirrored publicly in the `omgbbqhaxx/BTC-Trading-Since-2020` GitHub repo
+(43k+ orders, 173k+ execution rows).
+
+Source: `D:\Workspace\Trader-knowledge\BTCSwingHunter_Zaid.mq5` (also
+deployed to the MT5 Experts folder).
+
+## What the analysis found (last year of Paul Wei's trades)
+
+Scraped and analyzed the last year (2025-04 → 2026-04) of his public BitMEX
+XBTUSD execution ledger:
+
+| Metric | Value |
+|---|---|
+| Trades (executions) | 3,336 |
+| Unique orders | 837 |
+| Reconstructed round trips | 16 |
+| Win rate (by price) | **93.8%** (15/16) |
+| Avg move per trade | **+3.68%** |
+| Median move | +4.52% |
+| Max win | +7.73% |
+| Only loss | −3.85% |
+| Holding time | median ~5 days, up to 47 days |
+| Direction | 8 long / 8 short (balanced) |
+| Order style | ~97% limit orders, many small orders (10k–50k contracts) to build positions |
+
+**Key insight:** This is a **swing/position trader**, not a scalper. He
+builds positions with many small limit orders, holds for **days**, uses
+tight risk management, and takes **3–7% moves** with a very high win rate.
+The edge comes from patient limit-order accumulation and letting winners run.
+
+## Configuration (as deployed 2026-09-08)
+
+| Setting | Value |
+|---|---|
+| Magic number | **20260916** |
+| Symbol | BTCUSD (attach to BTCUSD chart) |
+| Lot | 0.01 |
+| Trend filter | H4 EMA50 |
+| Entry | H1 EMA21 + RSI(14) pullback |
+| SL | max(2.0 × ATR(14), 100 points) |
+| TP | 2.5 × SL distance (RR 2.5) |
+| Max concurrent positions | 1 |
+| Max new trades/day | 3 |
+| Kill switch | +$50 profit / −$25 loss |
+| Trailing stop | 2.0 × ATR (optional, on by default) |
+
+## Strategy logic
+
+- **Trend filter (H4)**: only BUY above H4 EMA50, only SELL below H4 EMA50.
+- **Pullback entry (H1)**: in an uptrend, BUY when price pulls back to the
+  H1 EMA21 and RSI is not overbought (< 45). In a downtrend, SELL when price
+  rallies to H1 EMA21 and RSI is not oversold (> 55).
+- **Swing holding**: no intraday bar limit — positions are held for days,
+  managed by SL/TP and an optional trailing stop.
+- **No daily cutoff** that force-closes positions (that would kill swing
+  trades). Instead, a kill switch guards daily P/L.
+
+## Risk model
+
+- 0.01 lot on BTCUSD.
+- ATR-based SL ≈ **2–4% risk**; TP ≈ **5–10% reward** (RR 2.5).
+- [[Kill Switch]]: daily P/L guard — closes all and stops the day at
+  **+$50 profit** or **−$25 loss**.
+- **1 concurrent position**, **3 new trades/day** max.
+
+## Version history
+
+| Date | Change |
+|---|---|
+| 2026-09-08 | Created from Paul Wei's public BitMEX trade-history analysis. Compiled 0 errors/0 warnings, deployed to MT5 Experts. |
+
+## Related
+
+- [[GoldBreakoutHunter]] — the gold breakout bot (different style).
+- [[GoldHunterPro Small]] — the gold M1 scalper.
+- [[Risk Reward]] — RR sizing used here.
+
+## Jargon
+
+- **Swing trading** — holding positions for days to weeks to capture a
+  larger move, vs scalping (minutes).
+- **Limit order** — an order to buy/sell at a specified price or better;
+  used to get favorable entries.
+- **Donchian / channel** — highest high / lowest low over N bars.
+- **EA / Expert Advisor** — an MQL5 program that automates trading.
+- **Magic number** — numeric tag on orders so the EA only manages its own
+  trades.
+- **ATR** — Average True Range (14), a volatility measure.
+- **RR** — risk:reward ratio (see [[Risk Reward]]).
