@@ -5,6 +5,47 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-10] fix | v3.11 kill-switch/close bug — 2 naked trades + root cause
+
+- **Incident (00:16–00:21 server)**: v3.10's kill switch fired and produced
+  **2 naked trades (no SL/TP)** that the user had to close manually:
+  - 00:16:45 — kill switch fired → printed `Closed position #2307811010
+    result: 10009` (retcode DONE) but **did NOT close it** — instead opened
+    **NEW BUY 4408.91** (ticket 2307815810, comment "KillSwitch/Cutoff
+    close", **no SL/TP**) — mistake #1
+  - 00:20:17 — SELL #2307811010 (v3.00's trade, 4412.07 → TP 4405.81 zone)
+    hit TP at 4405.72 → **+$6.35 win** (the "win from 3.0")
+  - 00:20:21 — kill switch fired **again** → opened **NEW SELL 4405.67**
+    (ticket 2307820670, **no SL/TP**) — mistake #2
+  - 00:21:03–04 — user closed both mistakes manually (4407.83 / 4407.23)
+    → **−$1.68 / −$2.16**
+- **Net**: +$6.35 − $1.68 − $2.16 = **+$2.51** → balance 1030.58 → **1033.09**.
+  Account flat.
+- **Root cause — 3 bugs in v3.10**:
+  1. **`CloseAllPositions()` never set `request.position = ticket`** — in MT5
+     a market order without a position reference **opens a NEW position**
+     instead of closing. The "close" created naked trades. **Critical.**
+  2. **Kill switch counted YESTERDAY's P/L** — `g_dayStart = iTime(PERIOD_D1, 0)`
+     uses the D1 bar boundary (00:00 UTC = 21:30 server). v3.10 loaded at
+     21:44 UTC (still inside 09-09's D1 bar) → counted 09-09's +$15.31 +
+     floating → +$18.47 ≥ +$10 → **fired instantly on load**.
+  3. **Kill switch re-fired every tick** — `CheckKillSwitch()` ran *before*
+     the `g_dayStopped` guard, so once tripped it fired on every tick,
+     opening a new naked trade each time.
+- **Fixes (v3.11, same magic 20260915)**:
+  1. `request.position = ticket` added to `CloseAllPositions()` — closes now
+     actually close.
+  2. Day start = **server midnight** (`ServerDayStart()` helper) — kill
+     switch counts only today's P/L.
+  3. `g_dayStopped` guard moved **before** `CheckKillSwitch()` — fires once
+     per day max.
+  4. **Kill switch profit target raised to +$32** (user directive; loss
+     limit stays −$50).
+- Compiled **0 errors / 0 warnings**, deployed to MT5 Experts folder
+  (v3.11, 26,592 bytes, 2026-09-10 00:32).
+- **Lesson**: a "successful" close retcode (10009) does not mean a position
+  closed — verify `request.position` is set and confirm via deal log.
+
 ## [2026-09-10] fix | v3.10 trend-filter fix — root cause of counter-trend BUYs
 
 - **Diagnosis**: 3 of 4 morning BUYs hit SL (trades 2/3/5 on 2026-09-09) because
