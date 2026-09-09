@@ -5,6 +5,18 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-09] trade | Trade #1 closed +$2.69 — scripts removed from charts
+
+- **Scripts removed** (MT5 log): v3 (GOLD,M15) removed 23:36:17,
+  BTCSwingHunter v2 (BTCUSD,M15) removed 23:36:19. Agent is sole trader.
+- **Trade #1 closed**: BUY 0.01 GOLD 4416.94 (ticket 2307782344, opened
+  20:59 UTC) closed **manually** 23:45:36 server at **4419.63** → **+$2.69**
+  (deal #2167386144, order #2307794666). Not TP/SL — user pulled out at
+  +$2.69, matching the "small profit, pull out" style.
+- Balance: 1031.33 → **1034.02**. Account flat.
+- **Daily cutoff reached** (23:59 local) — no new trades until next day.
+  Day total: +$2.69 (agent-managed portion).
+
 ## [2026-09-09] decision | New trading plan — $5 targets, 2:1 RR, agent trades
 
 - **User directive**: "do it now itself start from now" — agent starts
