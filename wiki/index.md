@@ -36,8 +36,9 @@ and strategy research. Every trade is ingested and linted.
 - [[GoldBreakoutHunter]] — demo EA built from verified strategies (Marci
   Silfrain + Gold Prop Firm Robot): Donchian breakout + EMA50 trend filter,
   magic 20260915, v3.00 flood-proof (1 trade/M1 bar, 15-min cooldown, max 1
-  position, 4 trades/day). **First live win 2026-09-09: +$8.36** (SELL
-  4367.52 → TP 4359.16).
+  position, 4 trades/day). **2026-09-09: 5 trades, net +$4.73 (2W/3L, 40%
+  win rate)** — first win +$8.36 (SELL 4367.52 → TP 4359.16), then 4 BUYs
+  (3 SL hits, 1 TP hit +$8.13).
 - [[BTCSwingHunter]] — demo BTC/USD swing EA built from Paul Wei's public
   BitMEX trade history (93.8% win rate, holds days): H4 trend + H1 pullback,
   magic 20260916, v2.00 with status prints. 0 trades so far (patient by

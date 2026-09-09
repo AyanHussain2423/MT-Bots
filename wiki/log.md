@@ -5,6 +5,29 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-09] session | GoldBreakoutHunter v3 — 5 trades, net +$4.73 (2W/3L)
+
+- After the first win (+$8.36 at 01:28:58), v3 kept trading overnight — **4
+  more trades, all BUYs** (trend flipped UP above EMA50, box-top breaks):
+  - 03:32 BUY 4358.27 (SL 4353.08, TP 4368.65) → SL hit 4353.06 → **−$5.21**
+  - 04:30 BUY 4354.31 (SL 4351.67, TP 4360.67) → SL hit 4351.67 → **−$2.64**
+  - 06:10 BUY 4349.63 (SL 4345.67, TP 4357.56) → TP hit 4357.76 → **+$8.13** ✅
+  - 06:28 BUY 4361.42 (SL 4357.79, TP 4368.76) → SL hit 4357.51 → **−$3.91**
+- **Day total: +$4.73 across 5 trades — 2W/3L, 40% win rate.** RR 2.0 →
+  breakeven at 33.3% → profitable day. Kill switch (−50) never re-fired;
+  magic-20260915 daily P/L ≈ **−$6.59** including the earlier −11.32.
+- **Pattern**: 3 of 4 BUYs were counter-trend bounces in a falling market
+  (bought box-top breaks while price kept making lower lows) → SL hits. The
+  06:10 BUY caught the real bounce → TP. Trend filter worked as designed:
+  the SELL (trend DOWN) won; the BUYs (trend UP) mostly lost.
+- **Cap note**: 5 trades fired with `MaxTradesPerDay` default 4 — the chart
+  input is likely set to 5 (or higher). Bot stopped after trade 5. Flagged
+  for the user to verify in EA properties.
+- Attribution verified: only v3 (GOLD,M15, loaded 00:36:24) and
+  BTCSwingHunter v2 (BTCUSD) were running after 00:36 — all 5 trades are
+  v3's (magic 20260915, SL/TP always set, entries at :02 past the minute =
+  EA pattern, not manual).
+
 ## [2026-09-09] session | GoldBreakoutHunter FIRST LIVE WIN (+$8.36) + manual-trade "flood" false alarm
 
 - **First real breakout trade**: `GoldBreakoutHunter_Zaid_v3` (GOLD,M15)

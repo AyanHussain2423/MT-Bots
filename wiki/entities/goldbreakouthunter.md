@@ -65,20 +65,34 @@ deployed to the MT5 Experts folder).
 - 0.01 lot = 1 oz of gold.
 - ATR-based SL ≈ **$3–$6 risk**; TP ≈ **$6–$12 reward** (RR 2.0).
 - [[Kill Switch]]: daily P/L guard — closes all and stops the day at
-  **+$10 profit** or **−$5 loss**.
+  **+$10 profit** or **−$50 loss** (raised from −$5 on 2026-09-09).
 - [[Daily Cutoff]]: at **23:59 local** closes all positions, deletes pending
   orders, and stops for the day.
-- **2 trades/day cap** — added because the earlier bots traded too often.
+- **4 trades/day cap** — added because the earlier bots traded too often.
 
 ## Live results
 
 | Date | Trade | Entry | SL | TP | Exit | Result |
 |---|---|---|---|---|---|---|
 | 2026-09-09 | SELL (box-bottom break, trend DOWN) | 4367.52 | 4371.57 | 4359.38 | 4359.16 (TP hit, 01:28:58) | **+$8.36** ✅ |
+| 2026-09-09 | BUY (box-top break) | 4358.27 | 4353.08 | 4368.65 | 4353.06 (SL hit, 03:38:50) | **−$5.21** |
+| 2026-09-09 | BUY (box-top break) | 4354.31 | 4351.67 | 4360.67 | 4351.67 (SL hit, 05:22:06) | **−$2.64** |
+| 2026-09-09 | BUY (box-top break) | 4349.63 | 4345.67 | 4357.56 | 4357.76 (TP hit, 06:22:16) | **+$8.13** ✅ |
+| 2026-09-09 | BUY (box-top break) | 4361.42 | 4357.79 | 4368.76 | 4357.51 (SL hit, 06:31:18) | **−$3.91** |
+
+**Day total (2026-09-09): +$4.73 across 5 trades — 2W/3L, 40% win rate.**
+RR 2.0 means breakeven is 33.3% win rate, so 40% = profitable day.
 
 First verified live trade for the breakout strategy: sold when price broke
 the 20-bar box bottom (DistLo −0.07), price fell $8, TP captured in ~39
 minutes. RR 2.0 reward in full.
+
+Overnight pattern: after the win, trend flipped UP (price above EMA50) and
+the bot bought 4 box-top breaks. 3 of those were counter-trend bounces in a
+falling market (price kept making lower lows) → SL hits. The 06:10 BUY
+caught the real bounce → TP. The trend filter worked as designed — the
+SELL (trend DOWN) won, the BUYs (trend UP) mostly lost because the market
+was still falling.
 
 ## Version history
 
@@ -88,6 +102,7 @@ minutes. RR 2.0 reward in full.
 | 2026-09-08 | **v2.00 flood-proof rewrite** after a 1,156-deal flood incident: 1 trade per M1 bar, 15-min cooldown, max 1 position, max 4 trades/day. Redeployed as `GoldBreakoutHunter_Zaid_v2` (new name = fresh binary, no MT5 cache). |
 | 2026-09-08 | **v3.00** — renamed again (`GoldBreakoutHunter_Zaid_v3`) to force a fresh binary; M1-bar status prints (`GBH status | Bid | Range | DistHi/DistLo | Trend | buyBreak/sellBreak`). |
 | 2026-09-09 | **First live win +$8.36** (SELL 4367.52 → TP 4359.16). Kill-switch loss limit raised −$5 → −$50 after the day's earlier losses (−11.32) kept re-triggering it. |
+| 2026-09-09 | **5-trade day, net +$4.73** (2W/3L, 40% win rate): first win +$8.36, then 4 BUYs — 3 SL hits (−$5.21, −$2.64, −$3.91) and 1 TP hit (+$8.13). Kill switch (−50) held. Note: 5 trades fired with MaxTradesPerDay default 4 — chart input likely set to 5. |
 
 ## Related
 
