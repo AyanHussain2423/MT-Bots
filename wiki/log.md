@@ -5,6 +5,22 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-09] decision | New trading plan — $5 targets, 2:1 RR, agent trades
+
+- **User directive**: "do it now itself start from now" — agent starts
+  trading immediately with the new plan.
+- **Plan**: 0.01 lots, **target +$5, stop −$2.50** (2:1 RR). Spread on GOLD
+  is $0.56/round-trip (11% of target) — profitable even at 50% win rate
+  (+$0.69/trade). ~35 trades to net $50 at 60% WR.
+- **Why $5 not $2–3**: at $2.50 targets the spread ate 19–28% of the prize
+  (breakeven needed ~60% WR at 1:1); at $5 it's 11% and 50% WR is
+  profitable.
+- **Rules**: one trade at a time, SL/TP always set, kill switch −$50/day,
+  daily cutoff 23:59 local, every trade logged.
+- **Trade #1**: the open v3 BUY (ticket 2307782344, 4416.94, SL 4414.09,
+  TP 4423.09, RR 2.16:1) — taken over as the agent's first trade under the
+  plan; fits the $5-target profile (+$6.15).
+
 ## [2026-09-09] decision | Agent takes over as trader — scripts removed from charts
 
 - **User directive**: "the scripts wont make trades u will" — the agent
