@@ -5,6 +5,21 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-09] trade | Small double-fire closed −$3.44 — wrong bot attached
+
+- **Wrong bot attached**: user re-attached **GoldHunterPro Small** (magic
+  20260910) at 23:52:33 instead of v3 — Small is the retired bot.
+- **Double-fire**: Small fired **2 BUY entries 26s apart** from a single
+  instance (stacking bug — no open-position check):
+  - BUY 4419.32 (ticket 2307797870, SL 4411.34, TP 4435.34, 23:52:35)
+  - BUY 4419.38 (ticket 2307797997, SL 4411.36, TP 4435.36, 23:53:00)
+- **Closed manually** 23:55:54–55 server, both at **4417.63** (deals
+  #2167391177, #2167391183) → **−$1.69 / −$1.75 = −$3.44 total**.
+  Small removed from chart 23:55:51.
+- Balance: 1034.02 → **1030.58**. Account flat.
+- **Lesson**: Small's stacking bug confirmed (single instance, 2 entries in
+  26s). v3 (magic 20260915) is the bot to run; Small stays retired.
+
 ## [2026-09-09] trade | Trade #1 closed +$2.69 — scripts removed from charts
 
 - **Scripts removed** (MT5 log): v3 (GOLD,M15) removed 23:36:17,
