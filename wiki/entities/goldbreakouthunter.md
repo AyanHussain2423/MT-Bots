@@ -79,9 +79,15 @@ deployed to the MT5 Experts folder).
 | 2026-09-09 | BUY (box-top break) | 4354.31 | 4351.67 | 4360.67 | 4351.67 (SL hit, 05:22:06) | **−$2.64** |
 | 2026-09-09 | BUY (box-top break) | 4349.63 | 4345.67 | 4357.56 | 4357.76 (TP hit, 06:22:16) | **+$8.13** ✅ |
 | 2026-09-09 | BUY (box-top break) | 4361.42 | 4357.79 | 4368.76 | 4357.51 (SL hit, 06:31:18) | **−$3.91** |
+| 2026-09-09 | BUY (box-top break) | 4426.31 | 4420.08 | 4438.76 | 4419.89 (SL hit, 20:13:32) | **−$6.42** |
+| 2026-09-09 | BUY (box-top break) | 4398.62 | 4390.10 | 4415.59 | 4415.62 (TP hit, 22:36:02) | **+$17.00** ✅ |
 
-**Day total (2026-09-09): +$4.73 across 5 trades — 2W/3L, 40% win rate.**
-RR 2.0 means breakeven is 33.3% win rate, so 40% = profitable day.
+**Day total (2026-09-09): +$3.99 for v3 across 7 trades — 3W/4L, 42.9% win
+rate** (wins +$8.36/+$8.13/+$17.00 = +$33.49; losses −$5.21/−$2.64/−$3.91/
+−$6.42 = −$18.18; net +$15.31, plus the pre-kill-switch −$11.32 from the
+early dual-instance trades). RR 2.0 means breakeven is 33.3% win rate, so
+42.9% = profitable day. Kill switch (+$10 profit target) NOT fired — daily
+P/L +$3.99 is just under it.
 
 First verified live trade for the breakout strategy: sold when price broke
 the 20-bar box bottom (DistLo −0.07), price fell $8, TP captured in ~39
@@ -94,6 +100,13 @@ caught the real bounce → TP. The trend filter worked as designed — the
 SELL (trend DOWN) won, the BUYs (trend UP) mostly lost because the market
 was still falling.
 
+Evening session (after VPS migration): bot was offline 06:31–19:43 (missed
+the $69 rally from ~4357 → 4426), re-attached 19:43:28 on VPS. Bought the
+top of the rally at 4426.31 → SL hit (−$6.42), then bought the pullback at
+4398.62 → TP hit (+$17.00). The 21:57 BUY 4401.09 (+$16.02) was NOT v3's —
+GoldHunterPro Small (magic 20260910) was loaded for 34 seconds and opened
+it; both positions hit TP within 12 seconds of each other at 22:36.
+
 ## Version history
 
 | Date | Change |
@@ -103,6 +116,7 @@ was still falling.
 | 2026-09-08 | **v3.00** — renamed again (`GoldBreakoutHunter_Zaid_v3`) to force a fresh binary; M1-bar status prints (`GBH status | Bid | Range | DistHi/DistLo | Trend | buyBreak/sellBreak`). |
 | 2026-09-09 | **First live win +$8.36** (SELL 4367.52 → TP 4359.16). Kill-switch loss limit raised −$5 → −$50 after the day's earlier losses (−11.32) kept re-triggering it. |
 | 2026-09-09 | **5-trade day, net +$4.73** (2W/3L, 40% win rate): first win +$8.36, then 4 BUYs — 3 SL hits (−$5.21, −$2.64, −$3.91) and 1 TP hit (+$8.13). Kill switch (−50) held. Note: 5 trades fired with MaxTradesPerDay default 4 — chart input likely set to 5. |
+| 2026-09-09 | **VPS migration + evening session**: bot offline 06:31–19:43 (missed $69 rally), re-attached 19:43 on VPS (London LD6 04, 2.85 ms execution). 2 more trades: BUY 4426.31 → SL −$6.42, BUY 4398.62 → TP +$17.00. v3 day total **+$3.99** (7 trades, 3W/4L). Kill switch (+$10) not fired. |
 
 ## Related
 

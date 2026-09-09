@@ -5,6 +5,31 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-09] session | VPS migration + evening trades — v3 +$3.99 day, Small cameo +$16.02
+
+- **VPS migration**: 19:43:29 log shows "use MetaTrader VPS Hosting Service
+  to speed up the execution: 2.85 ms via 'VPS London LD6 04' instead of
+  204.98 ms". v3 + BTCSwingHunter re-attached 19:43:28. **Bot was offline
+  06:31–19:43** — missed the $69 rally (~4357 → 4426).
+- **3 new trades after re-attach**:
+  - 19:59:59 BUY 4426.31 (v3, SL 4420.08, TP 4438.76) → SL hit 4419.89
+    (20:13:32) → **−$6.42** — bought the top of the rally.
+  - 21:03:59 BUY 4398.62 (v3, SL 4390.10, TP 4415.59) → TP hit 4415.62
+    (22:36:02) → **+$17.00** ✅ — bought the pullback, caught the bounce.
+  - 21:57:02 BUY 4401.09 (SL 4393.09, TP 4417.09) → TP hit 4417.11
+    (22:36:14) → **+$16.02** ✅ — **NOT v3's**: user loaded GoldHunterPro
+    Small (magic 20260910) at 21:57:00 for 34 seconds (removed 21:57:34,
+    v3 re-loaded). Small opened it; both positions hit TP 12s apart.
+- **v3 day total: +$3.99** (7 trades, 3W/4L, 42.9% win rate; wins
+  +$8.36/+$8.13/+$17.00, losses −$5.21/−$2.64/−$3.91/−$6.42, plus early
+  −$11.32). Kill switch (+$10 profit target) **not fired** — one more TP
+  win would trigger it.
+- **Small cameo**: +$16.02 in 34 seconds of life. Recorded on its entity
+  page (retired from tracking, but the trade is real).
+- **Account day total: +$20.01** (v3 +$3.99 + Small +$16.02).
+- Current state: v3 running (re-loaded 21:57:34), flat, waiting. BTC bot:
+  0 trades. Both on VPS now.
+
 ## [2026-09-09] session | GoldBreakoutHunter v3 — 5 trades, net +$4.73 (2W/3L)
 
 - After the first win (+$8.36 at 01:28:58), v3 kept trading overnight — **4

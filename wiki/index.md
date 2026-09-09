@@ -33,12 +33,13 @@ and strategy research. Every trade is ingested and linted.
   and real 83160890 (MT5 4, "Gold.i#", Ultra Low Standard).
 - [[GoldHunterPro Small]] — M1 gold scalper (RSI+EMA+ATR, magic 20260910).
   **Retired from tracking 2026-09-09** (bad logic, bought garbage, broke).
+  Post-retirement cameo: +$16.02 in 34 seconds (21:57 BUY → TP).
 - [[GoldBreakoutHunter]] — demo EA built from verified strategies (Marci
   Silfrain + Gold Prop Firm Robot): Donchian breakout + EMA50 trend filter,
   magic 20260915, v3.00 flood-proof (1 trade/M1 bar, 15-min cooldown, max 1
-  position, 4 trades/day). **2026-09-09: 5 trades, net +$4.73 (2W/3L, 40%
-  win rate)** — first win +$8.36 (SELL 4367.52 → TP 4359.16), then 4 BUYs
-  (3 SL hits, 1 TP hit +$8.13).
+  position, 4 trades/day). **2026-09-09: 7 trades, net +$3.99 (3W/4L,
+  42.9% win rate)** — wins +$8.36/+$8.13/+$17.00, losses −$5.21/−$2.64/
+  −$3.91/−$6.42. Now running on VPS (London LD6 04).
 - [[BTCSwingHunter]] — demo BTC/USD swing EA built from Paul Wei's public
   BitMEX trade history (93.8% win rate, holds days): H4 trend + H1 pullback,
   magic 20260916, v2.00 with status prints. 0 trades so far (patient by

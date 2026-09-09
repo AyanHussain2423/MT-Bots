@@ -9,3 +9,9 @@ time,type,volume,symbol,price,sl,tp,comment
 2026-09-09 06:22:16.185,sell,0.01,GOLD,4357.76,,,close of BUY 4349.63 (TP hit) +8.13
 2026-09-09 06:28:02.689,buy,0.01,GOLD,4361.42,4357.79,4368.76,GBH BUY (open)
 2026-09-09 06:31:18.549,sell,0.01,GOLD,4357.51,,,close of BUY 4361.42 (SL hit) -3.91
+2026-09-09 19:59:59.947,buy,0.01,GOLD,4426.31,4420.08,4438.76,GBH BUY (open; v3 re-attached 19:43 after VPS migration)
+2026-09-09 20:13:32.808,sell,0.01,GOLD,4419.89,,,close of BUY 4426.31 (SL hit) -6.42
+2026-09-09 21:03:59.923,buy,0.01,GOLD,4398.62,4390.10,4415.59,GBH BUY (open)
+2026-09-09 22:36:02.811,sell,0.01,GOLD,4415.62,,,close of BUY 4398.62 (TP hit) +17.00
+2026-09-09 21:57:02.288,buy,0.01,GOLD,4401.09,4393.09,4417.09,GoldHunterPro_Small BUY (open; magic 20260910, loaded 21:57:00 for 34s)
+2026-09-09 22:36:14.168,sell,0.01,GOLD,4417.11,,,close of BUY 4401.09 (TP hit) +16.02

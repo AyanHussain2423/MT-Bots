@@ -12,6 +12,11 @@ sources: [raw/trades/2026-09-08-real-account.csv]
 > User decision: **no longer tracked** — the bot had bad logic, bought too
 > much garbage, and broke. Removed from the live bot set. The tracked set is
 > now [[GoldBreakoutHunter]] (v3) + [[BTCSwingHunter]] (v2).
+>
+> Post-retirement cameo (2026-09-09 21:57): loaded on GOLD,M15 for **34
+> seconds** (21:57:00 → 21:57:34) — opened BUY 4401.09 (SL 4393.09, TP
+> 4417.09) and hit TP at 22:36:14 → **+$16.02**. One trade, one win. Not
+> tracked, but recorded for completeness.
 
 The live Expert Advisor (EA) running on the real account. An M1 gold
 scalper built on RSI + EMA + ATR with hard risk guards. Source:
