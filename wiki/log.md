@@ -5,6 +5,21 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-09] decision | Agent takes over as trader — scripts removed from charts
+
+- **User directive**: "the scripts wont make trades u will" — the agent
+  (via MT5 MCP) is now the **sole trader**. Scripts (GoldBreakoutHunter v3,
+  BTCSwingHunter v2, GoldHunterPro Small) removed from MT5 charts by the
+  user.
+- **Open v3 BUY survives removal** (ticket 2307782344, 4416.94, SL 4414.09,
+  TP 4423.09): removing an EA from a chart does not close positions; SL/TP
+  already set. Agent manages it to TP/SL as its own trade.
+- **Agent takes over risk rules manually**: kill switch (+$10 profit /
+  −$50 loss), daily cutoff (23:59 local), SL/TP always set, one trade at a
+  time, every trade logged to the wiki.
+- `.mq5` sources stay in the repo — strategy logic remains the reference
+  for upgrades (v4 trend-continuation entry still on the table).
+
 ## [2026-09-09] session | VPS migration + evening trades — v3 +$3.99 day, Small cameo +$16.02
 
 - **VPS migration**: 19:43:29 log shows "use MetaTrader VPS Hosting Service
