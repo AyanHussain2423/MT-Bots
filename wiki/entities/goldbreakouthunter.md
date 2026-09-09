@@ -29,7 +29,8 @@ deployed to the MT5 Experts folder).
 | Symbol | GOLD (XM demo 169324224) |
 | Lot | 0.01 (1 oz) |
 | Channel period | 20 (Donchian breakout range) |
-| EMA | 50 (trend filter) |
+| EMA | 50 (trend filter) — **on M15 since v3.10** (was M1) |
+| Trend filter TF | **M15** (v3.10 fix) |
 | ATR | 14 |
 | SL | max(2.0 × ATR(14), 300 points) |
 | TP | 2.0 × SL distance (RR 2.0) |
@@ -117,6 +118,7 @@ it; both positions hit TP within 12 seconds of each other at 22:36.
 | 2026-09-09 | **First live win +$8.36** (SELL 4367.52 → TP 4359.16). Kill-switch loss limit raised −$5 → −$50 after the day's earlier losses (−11.32) kept re-triggering it. |
 | 2026-09-09 | **5-trade day, net +$4.73** (2W/3L, 40% win rate): first win +$8.36, then 4 BUYs — 3 SL hits (−$5.21, −$2.64, −$3.91) and 1 TP hit (+$8.13). Kill switch (−50) held. Note: 5 trades fired with MaxTradesPerDay default 4 — chart input likely set to 5. |
 | 2026-09-09 | **VPS migration + evening session**: bot offline 06:31–19:43 (missed $69 rally), re-attached 19:43 on VPS (London LD6 04, 2.85 ms execution). 2 more trades: BUY 4426.31 → SL −$6.42, BUY 4398.62 → TP +$17.00. v3 day total **+$3.99** (7 trades, 3W/4L). Kill switch (+$10) not fired. |
+| 2026-09-10 | **v3.10 trend-filter fix** — root cause of the 3 counter-trend BUY SL hits (trades 2/3/5): EMA50 trend filter was on **M1** (50 min of noise; price kept bouncing above it in the falling market → false "bullish"). Fixed: EMA50 now on **M15** (real trend), plus **channel-slope confirmation** (only BUY a rising channel / SELL a falling one) and **fresh-breakout guard** (previous M1 bar must close inside the channel — no chasing extended moves). Same magic/SL/TP/gates. Compiled 0 errors/0 warnings, deployed to MT5 Experts. |
 
 ## Related
 

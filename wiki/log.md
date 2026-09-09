@@ -5,6 +5,27 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-10] fix | v3.10 trend-filter fix — root cause of counter-trend BUYs
+
+- **Diagnosis**: 3 of 4 morning BUYs hit SL (trades 2/3/5 on 2026-09-09) because
+  the EMA50 trend filter ran on **M1** — 50 minutes of noise. In the falling
+  market, price kept bouncing above M1 EMA50 for minutes at a time → bot saw
+  "bullish" → bought box-top breaks → SL. The M15 trend was DOWN the whole time.
+- **Fixes (v3.10, same magic 20260915, same SL/TP/gates)**:
+  1. **Trend filter moved to M15** (`InpTrendTF = PERIOD_M15`) — real trend,
+     not noise.
+  2. **Channel-slope confirmation** — BUY only if the 20-bar channel is
+     rising, SELL only if falling (no buying flat/falling channels = no
+     buying tops).
+  3. **Fresh-breakout guard** — previous M1 bar must close inside the
+     channel; no entries when price is already extended/chasing.
+  4. Loss-limit default corrected to **−$50** in code (was 5.0; chart input
+     had overridden it).
+- Compiled **0 errors / 0 warnings**, deployed to MT5 Experts folder
+  (v3.10, 26,588 bytes, 2026-09-10 00:13).
+- **User directive**: fix v3 itself, do NOT build v4 yet — v4 is a bigger
+  thing to find later. v3 keeps collecting trades under the fixed filter.
+
 ## [2026-09-09] trade | Small double-fire closed −$3.44 — wrong bot attached
 
 - **Wrong bot attached**: user re-attached **GoldHunterPro Small** (magic
