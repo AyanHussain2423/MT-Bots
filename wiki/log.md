@@ -5,6 +5,32 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-10] fix | bar-gate robustness — BSH v2.01 + gold v3.12
+
+- **Symptom**: BTCSwingHunter_Zaid_v2 attached ~24h across 5 sessions (09-09
+  00:36, 19:43, 23:28; 09-10 00:02) — **0 trades, 0 status prints visible in
+  the log file**. User: "it didnt even trade once... thats bad dont you think".
+- **Honest answer**: not bad by design — this is a **swing bot** (Paul Wei
+  model: ~16 round-trips/year, holds days). A day without a trade is normal.
+  Current state (22:10 UTC): H4 trend DOWN (78,388 < H4 EMA50 ~79k), price
+  below H1 EMA21, RSI < 55 → waiting for an UP-pullback to H1 EMA21 with
+  RSI > 55 to sell. No setup present.
+- **Real bug found (both bots)**: `g_lastBarTime` advanced **before** the
+  `CopyBuffer` reads. If an indicator read failed on the first tick of a bar
+  (common right after attach), the bot returned silently — and the bar gate
+  then skipped the **entire bar** (1 hour for BSH, 1 minute for gold). One
+  bad tick = one dead bar.
+- **Fix (BSH v2.01 + gold v3.12)**: indicator reads moved **before** the bar
+  gate — a failed read returns WITHOUT advancing `g_lastBarTime`, so the bot
+  retries next tick instead of skipping the bar.
+- Compiled **0 errors / 0 warnings** both; deployed 00:45 (BSH 23,930 bytes,
+  gold 26,668 bytes).
+- **Also confirmed**: EA `Print()` output does **not** reach the log file
+  (zero prints from any EA in 2 days of logs, yet visible in the terminal UI
+  Experts tab — user pasted the v3.11 init line). Log file only carries
+  terminal-generated lines (loads/removes/trades). Verification of EA
+  liveness must use the terminal UI Experts tab, not the file.
+
 ## [2026-09-10] fix | v3.11 kill-switch/close bug — 2 naked trades + root cause
 
 - **Incident (00:16–00:21 server)**: v3.10's kill switch fired and produced
