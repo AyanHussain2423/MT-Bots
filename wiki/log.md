@@ -5,6 +5,29 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-10] build | v3.16 trend-continuation mode (slow-grind fix)
+
+- **Trigger**: gold fell 4359 → 4340 over 2+ hours with the bot watching —
+  the Donchian channel low ratchets down with price in a grind, so price
+  never "breaks" it. User: "MISSED A GOOD TRADE", "KEEPPPS GOIN LOW".
+- **Root cause (verified, no guessing)**: at 21:16 UTC every gate was GREEN
+  (EMA50 FALL with the v3.15 3-bar fix, channel FALLING, H1 DOWN, fresh
+  breakout TRUE) except one: `bid < lowMin` — bid 4342.30 vs channel low
+  4338.55. The bot was armed and 3.75 points from firing. Not a bug — a
+  design gap: breakouts don't fire in grinds.
+- **Fix (v3.16)**: trend-continuation entries — when the EMA50 is falling
+  HARD, enter NEAR the channel low instead of waiting for a break:
+  - `InpUseTrendContinuation = true` (master switch)
+  - `InpEMASlopeThreshold = 2.0` — EMA50 must decline ≥2 pts over 3 M15
+    bars (45 min) = "falling hard"
+  - `InpChannelProximity = 5.0` — enter when bid ≤ channel low + 5 pts
+  - `InpMaxTrendEntriesPerDay = 3` — cap (total trades still ≤ 4/day)
+  - Same filters as channel break (H1 confirm, channel slope), same
+    $5 SL / $10 TP. Trend entries counted separately in status print
+    (`TrendCont: sell/buy (n/3)`).
+- Compiled **0 errors / 0 warnings**, deployed 23:53 (31,118 bytes).
+- **Action**: remove + re-attach on GOLD,M15. Expect `v3.16 initialized`.
+
 ## [2026-09-10] fix | v3.15 smoothed EMA slope (3-bar comparison)
 
 - **Trigger**: gold kept grinding lower (4359 → 4349) with the EMA50
