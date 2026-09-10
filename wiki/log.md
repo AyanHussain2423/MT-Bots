@@ -5,6 +5,21 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-10] event | demo account reset to $100 — fresh start
+
+- **What happened**: user reset the demo balance to **$100.00** on purpose
+  ("to make me feel like if we start thats how it will end or go").
+  Deal: `SetCustomBalance -925.71` at 09:43:06 UTC → balance 1025.71 → 100.00.
+- **State at reset**: flat, no positions, no pending orders. Terminal had
+  restarted 19:36:04 (system shutdown at 09:55:28); both EAs auto-loaded
+  19:36:05 — gold **v3.13** (28,044 B) and BTC **v2.01** (23,960 B), both
+  latest builds.
+- **Implication**: the 4-trade filter sample (1W/3L, -7.38) still stands as
+  filter data, but the account history is now clean. Kill-switch limits
+  (+$32 / -$50) are now 32% / 50% of the account — flagged to user, their
+  call whether to scale.
+- **Sample restarts from $100.00.**
+
 ## [2026-09-10] fix | v3.13 trend quality — EMA slope + H1 confirm + reopen guard
 
 - **Trigger**: 4 trades under v3.12 filter → 1W/3L, net **-7.38** (balance
