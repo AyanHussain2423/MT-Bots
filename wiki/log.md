@@ -5,6 +5,34 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-10] fix | v3.13 trend quality — EMA slope + H1 confirm + reopen guard
+
+- **Trigger**: 4 trades under v3.12 filter → 1W/3L, net **-7.38** (balance
+  1033.09 → 1025.71). All 4 trades were BUYS into a dead-cat bounce after
+  hours of downtrend (4420 → 4389, then bounce to 4420.83):
+  - T1 01:02 UTC BUY 4405.75 → SL -3.05 (market-reopen gap fakeout)
+  - T2 03:52 UTC BUY 4401.74 → **TP +6.38** (bought start of bounce)
+  - T3 04:09 UTC BUY 4417.29 → SL -5.98 (bought top of spike)
+  - T4 05:06 UTC BUY 4418.58 → SL -4.73 (bought higher top)
+- **Root cause**: EMA50 filter too weak — only checks *price vs EMA50*. A
+  bounce above a still-FALLING EMA50 reads as "bullish" → bot buys dead-cat
+  bounces. Fresh-breakout guard useless in fast rallies (M1 channel ratchets
+  up with price).
+- **Fixes (v3.13, same magic 20260915)**:
+  1. **EMA slope filter** (`InpUseEMASlope`, on): BUY only if the M15 EMA50
+     itself is RISING, SELL only if FALLING. A bounce above a falling EMA is
+     not an uptrend. Would have blocked T1, T3, T4 (the 3 losers).
+  2. **H1 confirmation** (`InpUseH1Confirm`, on): M15 signal must agree with
+     H1 EMA50 trend. Blocks M15 bounces inside an H1 downtrend.
+  3. **Post-reopen guard** (`InpReopenGuardMinutes` = 20): detects the daily
+     market break (M1 bar gap > 5 min) and pauses entries for 20 min after
+     reopen. Blocks gap fakeouts (T1).
+- Status print now shows `EMA50: <price> RISE/FALL` and `H1: UP/DOWN` so we
+  can see exactly what blocks each entry.
+- Compiled **0 errors / 0 warnings**, deployed 09:13 (28,044 bytes).
+- **Sample so far**: 4 trades under fixed filter (1W/3L, -7.38). The sample
+  is doing its job — it exposed the weak trend filter in 4 trades.
+
 ## [2026-09-10] fix | bar-gate robustness — BSH v2.01 + gold v3.12
 
 - **Symptom**: BTCSwingHunter_Zaid_v2 attached ~24h across 5 sessions (09-09
