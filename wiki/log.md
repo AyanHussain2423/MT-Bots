@@ -5,6 +5,22 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-10] fix | v3.14 fixed $5 SL / $10 TP (2:1)
+
+- **User directive**: "lets do good trades okay 10 doller pl and 5 doller sl
+  rr to be 2" — stop loss **$5**, take profit **$10**, RR 2:1.
+- **Change**: replaced ATR-based SL/TP (`InpATRPeriod`, `InpATRMultiplier`,
+  `InpRR` removed) with fixed money inputs `InpSLMoney = 5.0`,
+  `InpTPMoney = 10.0`. $ → price distance via `SYMBOL_TRADE_TICK_VALUE` /
+  `SYMBOL_TRADE_TICK_SIZE` × volume, so it stays correct for any symbol/lot.
+  Gold 0.01 lot: $1 = 1.00 price move → SL 5.00 / TP 10.00.
+- ATR handle/read removed entirely (dead code). Compiled **0 errors / 0
+  warnings**, deployed 20:31 (27,720 bytes).
+- Kill switch unchanged (+$32 / -$50) — user did not answer the scale
+  question; still flagged as 32%/50% of the $100 balance.
+- **Action needed**: remove + re-attach EA on GOLD,M15 to load new ex5
+  (MT5 caches old builds). Expect init print `v3.14`.
+
 ## [2026-09-10] event | demo account reset to $100 — fresh start
 
 - **What happened**: user reset the demo balance to **$100.00** on purpose
