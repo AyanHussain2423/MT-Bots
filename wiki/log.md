@@ -5,6 +5,18 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-10] fix | v3.15 smoothed EMA slope (3-bar comparison)
+
+- **Trigger**: gold kept grinding lower (4359 → 4349) with the EMA50
+  actually falling for an hour (4384.13 → 4380.30) — but the bar-to-bar
+  slope kept printing RISE, blocking every sell. User: "KEEPPPS GOIN LOW".
+- **Fix**: EMA50 slope now compares `ema50[0]` vs `ema50[3]` (3 M15 bars =
+  45 min) instead of bar-to-bar. Same protection (no selling into a real
+  rising EMA), no one-bar wiggle. With this fix the slope reads FALL and
+  the bot sells the next break below the channel low.
+- Compiled **0 errors / 0 warnings**, deployed 23:37 (29,490 bytes).
+- **Action**: remove + re-attach on GOLD,M15. Expect `v3.15 initialized`.
+
 ## [2026-09-10] build | BTCBreakoutHunter_Zaid_v1 — BTC bot that actually trades
 
 - **Trigger**: user frustrated — "build another btc usd one is never trades i
