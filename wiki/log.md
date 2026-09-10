@@ -5,6 +5,27 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-10] build | BTCBreakoutHunter_Zaid_v1 — BTC bot that actually trades
+
+- **Trigger**: user frustrated — "build another btc usd one is never trades i
+  need one atleewasy". BTCSwingHunter_Zaid_v2 (swing model, ~16 round-trips/
+  year) sat for 24h+ with 0 trades. It was working as designed, but the user
+  wants a bot that trades.
+- **Solution**: port of GoldBreakoutHunter v3.14 to BTCUSD — same proven
+  filters, but BTC moves enough that breakouts fire daily:
+  - Donchian breakout on **M5 channel** (20 bars = 100 min; M1 too noisy on
+    BTC) — `InpChannelTF` input, changeable
+  - M15 EMA50 trend + **EMA slope** filter + **H1 confirm** (same as gold)
+  - Fixed **$5 SL / $10 TP** (2:1) via tick-value conversion — on BTC that's
+    ~500/1000 points (0.6%/1.3% of price)
+  - Kill switch +$32/−$50, max 4 trades/day, 15 min cooldown, magic
+    **20260917**, comments `BBH BUY`/`BBH SELL`, status print `BBH status`
+  - Reopen guard kept (fires only on broker-maintenance gaps; BTC is 24/7)
+- Compiled **0 errors / 0 warnings**, deployed 21:35 (28,718 bytes).
+- **Action**: remove BTCSwingHunter_Zaid_v2 from the BTCUSD chart, attach
+  BTCBreakoutHunter_Zaid_v1. Expect init print `BTCBreakoutHunter v1.00
+  initialized... Channel: 20xPERIOD_M5`.
+
 ## [2026-09-10] fix | v3.14 fixed $5 SL / $10 TP (2:1)
 
 - **User directive**: "lets do good trades okay 10 doller pl and 5 doller sl
