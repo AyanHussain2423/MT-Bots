@@ -40,9 +40,14 @@ $8 risk. The kill switch's −$40 bound allows ~5 such losses before firing.
 
 ## SL sizing
 
-- SL = max(2.5 × ATR(14), 800 points) — volatility-adaptive with a floor.
-- On the real account the floor (800 pts ≈ $8) is what binds at current
-  volatility.
+- **Current (breakout bots, v3.14+ directive)**: **fixed $5 SL / $10 TP**
+  (2:1) — converted to price via tick value/size, so it stays correct for
+  any symbol/lot. Gold 0.01 lot: $1 = 1.00 price move → SL 5.00 / TP 10.00.
+  BTC 0.01 lot: ≈ 500/1000 points.
+- **Historical (GoldHunterPro Small, real account)**: SL = max(2.5 ×
+  ATR(14), 800 points) — volatility-adaptive with a floor. On the real
+  account the floor (800 pts ≈ $8) is what binds at current volatility.
+  Superseded by the fixed-money directive for the breakout bots.
 
 ## Jargon
 

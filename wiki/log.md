@@ -5,6 +5,168 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-12] analysis+build | Hour-window discovery + v3.24/v1.06 hard-cap build
+
+- **Analysis**: volatility/channel-range filter tested on 21 months — **DEAD**
+  (negative at every threshold on 20-21 UTC 2025; the edge is the hour, not
+  the filter). **03-04 UTC is the ONLY hour window positive in BOTH 2025
+  (+0.95) and 2026 (+0.67)**; combined +0.81 (n=9348), 16/21 positive months;
+  all-hours expectancy −0.11. The earlier "03-04 fails" was a 6-week regime
+  rotation artifact (Sep 2026: 03-04 −1.57 while 20-21 +1.77). Filed:
+  [[Hour Window Analysis 2026-09-12]].
+- **Cap audit**: gold server day 09-11 = **7 entries** (cap 4) — root cause:
+  `InpResetDailyCounters=true` at attach zeroes the counter mid-day. Gold's
+  `CountTradesToday()` was actually correct (7); the "(4 trades)" log message
+  prints `InpMaxTradesPerDay`, not the counter. BTC: 3 entries in history but
+  counter restored 4 — unresolved; diagnostic added.
+- **Build v3.24 gold**: `InpStartHourUTC`/`InpEndHourUTC` (default 3-4 UTC),
+  daily cap refreshed from history every minute (holds across re-attaches and
+  manual resets), limit message printed once/day, trend-entry comments tagged
+  (`GBH BUY T`/`GBH SELL T`) + `CountTrendEntriesToday()` restores the 3/day
+  trend cap (closes the v3.21 residual gap). Compiled 0/0, deployed.
+- **Build v1.06 BTC**: cap refreshed from history every minute, limit message
+  once/day, `CountTradesToday(true)` diagnostic at init (prints each counted
+  deal — resolves the 4-vs-3 question on next attach). Compiled 0/0, deployed.
+- **Account**: bots run on demo **169324224** (XMGlobal-MT5 2) — third
+  account, now documented in [[XM Accounts]]. Balance $93.98 (MCP pull
+  09-11 ~19:00 UTC).
+
+---
+
+## [2026-09-11] analysis | Entry-quality retrospective — all 7 gold trades reconstructed from M1
+
+- **Method**: full M1 dataset (101,072 bars, 2026-06-02 → 09-11 18:52 UTC,
+  user-provided CSV) + v3.21 EA source → exact indicator values at each
+  entry (Donchian M1-20, slope 21–40, M15 EMA50, H1 EMA50, fresh guard).
+  All deal times UTC; all fills inside their CSV bar ranges (feed matches).
+- **Correction**: ALL 6 sells were **trend-continuation entries** — the
+  channel-break path never fired (price was always 0.07–4.28 pts ABOVE the
+  channel low). Earlier M15-based classification (#2/#5/#6 = channel breaks)
+  was wrong.
+- **Entry quality**: trend sells entered 27–41 pts below M15 EMA50, within
+  5 pts of the channel low = selling the bottom of the range. 2W/4L = 33.3%
+  = exactly breakeven at 2:1 RR. Winners (#2, #3) were the freshest entries
+  (MAE < 0.4 pts); losers were re-entries into the same grind.
+- **#7** was a marginal channel break (0.17 pts above the 20-bar high after
+  a 50-pt rally) — bought the top; SL correct (price crashed 27 pts after).
+- **Cap-bug cost −$15.76**: if the 4/day cap had held (#1–#4): +$10.39.
+  Cap-bug trades #5/#6/#7 all lost. Also found: the 3/day trend-continuation
+  counter was violated (#4–#6 fired as trendSell after #1–#3 used all 3) —
+  `g_trendEntriesToday` still resets on re-attach (residual gap in v3.21).
+- **Filed**: `wiki/synthesis/entry-quality-retrospective-2026-09-11.md`;
+  entity page corrected (7 trades, −$5.37, v3.21, cap-bug finding).
+
+---
+
+## [2026-09-11] trade | Gold overnight session (v3.20) — 3 trades, gate verified both ways
+
+- **Trade #3 (01:30)**: SELL 0.01 GOLD @ **4324.12** (SL 4329.20, TP
+  4314.20). TP hit 04:11:18 at **4314.21** → **+$9.91** (+$0.13 swap).
+  Balance 104.92 → 105.83.
+- **Trade #4 (04:12)**: SELL 0.01 GOLD @ **4315.54** (SL 4320.10, TP
+  4305.10). SL hit 04:31:55 at **4320.11** → **−$4.57**. Fired **1 minute
+  after the trade #3 TP** — the v3.20 "no restriction after TP" working as
+  designed.
+- **Trade #5 (05:08)**: SELL 0.01 GOLD @ **4314.60** (SL 4319.60, TP
+  4304.60). SL hit 05:31:05 at **4319.86** → **−$5.26**. Fired **37 minutes
+  after the trade #4 SL** — the stop-out penalty was ON and required a NEW
+  channel low before re-entry; price fell to 4314.60 (below the SL-time low
+  ~4315) → gate passed → re-entry. The market bounced again anyway — the
+  gate did its job (required proof), the trade lost on the bounce.
+- **Scoreboard (v3.18+ era, fresh $100)**: 5 trades, 2W/3L — #1 −$5.26, #2
+  +$10.18, #3 +$9.91, #4 −$4.57, #5 −$5.26 → **net +$5.13 → balance
+  $105.13**. Win rate 40% > 33.3% breakeven for 2:1 RR — net positive as
+  designed.
+- Gold used **3 of 4 daily trades** (server day); one entry left today.
+- Entry types for trades #3–#5 (trend-continuation vs channel break) not
+  confirmed — status prints are UI-only, not in the terminal log.
+
+## [2026-09-11] trade | BTC first trade ever (v1.04) — SELL open
+
+- **04:00:01 SELL 0.01 BTCUSD @ 77048.45** (SL 77548.45 = $5, TP 76048.45 =
+  $10) — the BTC bot's **first trade** after ~30h attached (v1.00 09-10
+  21:35 → v1.04 00:38). Magic 20260917, comment `BBH SELL`.
+- **Still open** as of 07:36: price 76905.25 → **+$1.43 floating**. SL/TP
+  are 500/1000 points = the fixed $5/$10 (2:1 RR) on BTC.
+- BTC used 1 of 4 daily trades.
+
+## [2026-09-11] build | v3.20/v1.04 stop-out penalty gate — time cooldown replaced
+
+- **User question**: "instead of getting blind for 5 minutes dont we have
+  other solution for it ?? idk some kind of a gate or flag" — the cooldown
+  was a **clock**, not a market signal. After an SL the bot waited blind
+  time; after a TP it was punished too (trend confirmed, should re-enter).
+- **Fix (v3.20 gold / v1.04 BTC)**: **stop-out penalty flag** replaces the
+  cooldown entirely (`InpCooldownMinutes` removed):
+  - After an **SL**: same-direction entries blocked until the channel makes
+    a **NEW extreme** (new low for sells / new high for buys) — the market
+    must prove the bounce failed. No time blindness: waits as long as
+    needed, never blocks a fresh opposite signal.
+  - After a **TP**: **no restriction** — re-enter on the next signal (bar
+    gate + daily limit + kill switch still apply).
+  - Detection: `CheckLastExit()` scans history once per minute for the last
+    SL/TP deal on our magic (`DEAL_REASON_SL`/`DEAL_REASON_TP`); stores the
+    channel extreme at detection (same 20-bar window as entry logic).
+    Kill-switch/manual closes (reason ≠ SL/TP) do NOT trigger the penalty.
+  - Status print now shows `SLpenalty: ON(SELL)/ON(BUY)/off`.
+- **Validated against trade #2**: SELL SL at 00:21 (channel low ~4330.04);
+  price made a new low below it before 00:31 → gate would have passed →
+  trade #2 (+$10.18) still fires. The gate blocks only repeated sells into
+  the same support zone.
+- Compiled **0 errors / 0 warnings** both; deployed 00:38 (gold 31,968 B,
+  BTC 31,936 B).
+- **Action**: remove + re-attach both EAs. Expect `v3.20 initialized` /
+  `v1.04 initialized`.
+
+## [2026-09-11] trade | Trade #2 +$10.18 TP win — cooldown fix validated
+
+- **00:31:00 SELL 0.01 GOLD @ 4326.68** (SL 4331.53, TP 4316.53) — fired
+  **1 minute after the v3.19 re-attach** (00:30:36). TP hit 00:32:51 at
+  **4316.50** → **+$10.18**. Balance 94.74 → **104.92**.
+- **The cooldown fix paid for itself immediately**: trade #1 opened 00:20.
+  With the old 15-min cooldown the bot was blocked until 00:35 and would
+  have **missed this exact winning trade**. The 5-min cooldown let it
+  through; the v3.20 gate removes the clock entirely.
+- **Scoreboard (v3.18+ era)**: trade #1 SELL 4331.49 → SL −$5.26; trade #2
+  SELL 4326.68 → TP +$10.18. **Net +$4.92** — the 2:1 RR working as
+  designed (lose $5, win $10, net positive even at 50/50).
+
+## [2026-09-11] fix | v3.19/v1.03 status print before gates + cooldown 15→5
+
+- **Symptom**: after trade #1 (00:20 SELL → SL 00:21:20) the bot went
+  **silent** — user: "no new prints". Root cause: the status print sat
+  AFTER the cooldown/position/daily gates, so during the 15-min cooldown
+  the bot returned early and printed nothing. Looked dead, was waiting.
+- **Fix (v3.19 gold / v1.03 BTC)**: status print moved **before all gates**
+  — the bot now reports every M1 bar (gold) / M5 bar (BTC) regardless of
+  position, cooldown, or daily-limit state. Cooldown default cut 15 → 5 min
+  (bar gate + daily limit + kill switch already cover spam).
+- Compiled **0 errors / 0 warnings** both; deployed 00:30 (gold 30,440 B,
+  BTC 31,308 B).
+- **Also confirmed from the terminal log**: EA `Print()` never reaches the
+  log file — only terminal-generated lines (loads/removes/trades) do. The
+  00:20 SELL and 00:21 SL close ARE in the log; status prints are UI-only.
+
+## [2026-09-11] fix | v3.18/v1.02 raw trend fix — trade #1 −$5.26
+
+- **Root cause found**: v3.17 still showed `TrendCont: false/false` with
+  price 42 pts below EMA50 because `bearish`/`bullish` were themselves
+  **slope-filtered** (`InpUseEMASlope` ANDed `bearish` with `emaFalling`).
+  Slope read RISE on a single M15 bar bounce → bearish = FALSE → trendSell
+  never fired. Trend entries now use **raw** price-vs-EMA50
+  (`rawBearish = bid < ema50[0]`); channel breaks keep the slope filter.
+- **Trade #1 (the proof the fix works)**: 00:20 SELL 0.01 GOLD @ **4331.49**
+  (SL 4336.53, TP 4321.53) — all 5 checks green (raw distance 43 pts ≥ 10,
+  proximity 1.5 pts ≤ 5, H1 DOWN, channel FALLING, allowance 0/3). SL hit
+  00:21:20 at 4336.75 → **−$5.26**. Balance 100.00 → 94.74.
+- **Honest read**: the loss is not a code failure — the bot did exactly
+  what it was built to do. But the entry was 1.45 pts above the channel low
+  (4330.04) = **selling into support**; the trade lasted 80 seconds. That
+  entry-quality question is tracked for the 20–30 trade sample, not judged
+  on one trade.
+- Compiled **0 errors / 0 warnings** both; deployed 00:19 (gold 30,128 B,
+  BTC 30,006 B).
+
 ## [2026-09-10] build | v3.16 trend-continuation mode (slow-grind fix)
 
 - **Trigger**: gold fell 4359 → 4340 over 2+ hours with the bot watching —

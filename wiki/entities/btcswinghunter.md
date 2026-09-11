@@ -95,6 +95,13 @@ EMA21 pullback + RSI). Status prints once per H1 bar:
 `BSH status | H4trend | RSI | price/EMA21 | buySig/sellSig`. Patient by
 design: Paul Wei's style holds days and trades rarely.
 
+> [!note] Replaced on the chart 2026-09-10
+> The user wanted a BTC bot that actually trades ("build another btc usd one
+> is never trades i need one atleewasy"). [[BTCBreakoutHunter]] (breakout
+> style, trades daily) replaced this bot on the BTCUSD chart. This page is
+> kept as the record of the Paul Wei swing research — the model itself is
+> sound, just too patient for the user's current goal.
+
 ## Version history
 
 | Date | Change |

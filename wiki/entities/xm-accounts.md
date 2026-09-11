@@ -8,7 +8,7 @@ sources: [raw/trades/2026-09-08-real-account.csv]
 
 # XM Accounts
 
-Two XM accounts are in play: a demo account for testing and the real
+Three XM accounts are in play: two demo accounts for testing and the real
 account for live trading. They run on **different servers with different
 symbol names** — a recurring source of confusion.
 
@@ -36,6 +36,19 @@ symbol names** — a recurring source of confusion.
 - **Account type:** Standard (wider spreads, no commission)
 - **Symbol for gold:** **GOLD**
 - Same contract size as real → same risk math carries over (0.01 lot = 1 oz).
+
+## Bot demo account (breakout bots)
+
+- **Login:** 169324224
+- **Server:** XMGlobal-MT5 2
+- **Type:** Demo, leverage 1:1000
+- **Symbols:** GOLD, BTCUSD
+- **Balance:** $93.98 (MCP pull 2026-09-11 ~19:00 UTC; fresh $100 on 09-11 →
+  $94.78 after the 09-11 session → $93.98)
+- **Home of:** [[GoldBreakoutHunter]] (magic 20260915) and
+  [[BTCBreakoutHunter]] (magic 20260917) since ~09-10.
+- **History quirk:** a `SetCustomBalance −925.71` deal (2026-09-10 09:43 UTC)
+  reset the demo balance — normal demo-account maintenance.
 
 ## Key facts
 

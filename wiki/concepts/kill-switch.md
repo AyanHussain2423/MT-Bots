@@ -8,9 +8,20 @@ sources: [entities/goldhunterpro-small]
 
 # Kill Switch — Account-Wide Daily P/L Guard
 
-A hard risk guard in [[GoldHunterPro Small]] that caps the damage (or locks
-in the win) of a single trading day. It is **account-wide**: it sums the
-daily P/L across *all* positions (closed + floating), not per trade.
+A hard risk guard in the EAs that caps the damage (or locks in the win) of
+a single trading day. It is **account-wide**: it sums the daily P/L across
+*all* positions (closed + floating), not per trade.
+
+## Settings per bot
+
+| Bot | Profit target | Loss limit |
+|---|---|---|
+| [[GoldHunterPro Small]] (real account) | **+$100** | **−$40** |
+| [[GoldBreakoutHunter]] (v3.11+, user directive) | **+$32** | **−$50** |
+| [[BTCBreakoutHunter]] (port) | **+$32** | **−$50** |
+
+The breakout bots' +$32/−$50 is 32%/50% of the $100 demo balance — flagged
+to the user as aggressive; their call whether to scale.
 
 ## How it works
 
