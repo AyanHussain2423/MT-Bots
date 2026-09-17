@@ -43,10 +43,12 @@ symbol names** — a recurring source of confusion.
 - **Server:** XMGlobal-MT5 2
 - **Type:** Demo, leverage 1:1000
 - **Symbols:** GOLD, BTCUSD
-- **Balance:** $93.98 (MCP pull 2026-09-11 ~19:00 UTC; fresh $100 on 09-11 →
-  $94.78 after the 09-11 session → $93.98)
-- **Home of:** [[GoldBreakoutHunter]] (magic 20260915) and
-  [[BTCBreakoutHunter]] (magic 20260917) since ~09-10.
+- **Balance:** $71.82 (MCP pull 2026-09-17 ~21:50 UTC; fresh $100 on 09-11 →
+  $94.78 after 09-11 → $93.98 → **$71.82** after the 09-12→09-17 week,
+  −$28.18 since the 09-10 reset)
+- **Home of:** [[GoldBreakoutHunter]] (magic 20260915),
+  [[BTCBreakoutHunter]] (magic 20260917), and [[BTCSwingHunter]] (magic
+  20260916, re-attached — first trades 09-17).
 - **History quirk:** a `SetCustomBalance −925.71` deal (2026-09-10 09:43 UTC)
   reset the demo balance — normal demo-account maintenance.
 

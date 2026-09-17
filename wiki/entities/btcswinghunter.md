@@ -88,19 +88,27 @@ The edge comes from patient limit-order accumulation and letting winners run.
 
 | Date | Trade | Entry | SL | TP | Exit | Result |
 |---|---|---|---|---|---|---|
-| — | none yet | — | — | — | — | 0 trades as of 2026-09-09 |
+| 2026-09-17 | SELL | 76318.25 | 77119.95 (ATR) | — | 77119.95 (SL hit, 15:30:39) | **−$8.02** |
+| 2026-09-17 | SELL | 76696.80 | 77362.31 (ATR) | 74716.60 | open (as of 09-17 ~21:50 UTC) | **+$0.25 floating** |
 
-No trades yet — swing bot waiting for its pullback setup (H4 trend + H1
-EMA21 pullback + RSI). Status prints once per H1 bar:
+**First trades ever — 2026-09-17, after ~9 days attached.** The patient
+swing bot finally fired twice (both SELLs, H4 downtrend + H1 EMA21 pullback
++ RSI). Trade #1's SL was **ATR-based (798 pts ≈ $8 on 0.01 lot)** — bigger
+than the $5 fixed SL the breakout bots use; that's the swing model's design
+(RR 2.5), but it's the first live evidence of what a swing loss costs.
+Trade #2 still open. See [[2026-09-17 Bot Week Session]].
+
+Status prints once per H1 bar:
 `BSH status | H4trend | RSI | price/EMA21 | buySig/sellSig`. Patient by
-design: Paul Wei's style holds days and trades rarely.
+design: Paul Wei's style holds days and trades rarely — it sat ~9 days
+before its first trades (09-17).
 
-> [!note] Replaced on the chart 2026-09-10
-> The user wanted a BTC bot that actually trades ("build another btc usd one
-> is never trades i need one atleewasy"). [[BTCBreakoutHunter]] (breakout
-> style, trades daily) replaced this bot on the BTCUSD chart. This page is
-> kept as the record of the Paul Wei swing research — the model itself is
-> sound, just too patient for the user's current goal.
+> [!note] Chart history
+> Replaced on the chart 2026-09-10 by [[BTCBreakoutHunter]] (the user wanted
+> a BTC bot that actually trades). **Re-attached later and fired its first
+> trades 2026-09-17** (2 SELLs, 1 SL'd −$8.02, 1 open). The Paul Wei swing
+> model is sound but slow; its ATR SL costs ~$8 per loss — decide whether it
+> stays on the chart.
 
 ## Version history
 

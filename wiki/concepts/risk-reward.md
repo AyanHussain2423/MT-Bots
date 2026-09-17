@@ -40,10 +40,16 @@ $8 risk. The kill switch's −$40 bound allows ~5 such losses before firing.
 
 ## SL sizing
 
-- **Current (breakout bots, v3.14+ directive)**: **fixed $5 SL / $10 TP**
-  (2:1) — converted to price via tick value/size, so it stays correct for
-  any symbol/lot. Gold 0.01 lot: $1 = 1.00 price move → SL 5.00 / TP 10.00.
-  BTC 0.01 lot: ≈ 500/1000 points.
+- **Current (gold breakout bot, v3.26)**: **ATR-based** — SL = 1.5× M15
+  ATR(14), TP = 3.0× (2:1). Wider than the old $5 fixed SL (which sat
+  inside M15 noise — 5 of 7 losers 09-12→09-17 died on 5–8 pt wiggles).
+  Fixed $5/$10 still available via `InpUseATRSL=false`. Gold 0.01 lot:
+  $1 = 1.00 price move.
+- **Current (BTC breakout bot, v1.06)**: **fixed $5 SL / $10 TP** (2:1) —
+  converted to price via tick value/size; BTC 0.01 lot ≈ 500/1000 points.
+- **Current (BTC swing bot, v2.00)**: ATR-based — SL = max(2.0 × ATR(14),
+  100 pts), TP = 2.5 × SL (RR 2.5). Live evidence 09-17: SL 798 pts ≈ $8
+  per loss.
 - **Historical (GoldHunterPro Small, real account)**: SL = max(2.5 ×
   ATR(14), 800 points) — volatility-adaptive with a floor. On the real
   account the floor (800 pts ≈ $8) is what binds at current volatility.

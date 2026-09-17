@@ -5,6 +5,38 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-17] ingest+analysis+build | Bot week 09-12→09-17 + v3.26 four fixes
+
+- **Ingest**: pulled deals for all three bots (account 169324224, MCP
+  09-17 ~21:50 UTC). Gold (magic 20260915): **7 trades, 2W/5L, −$8.79** —
+  ALL trend-continuation entries, ALL fired OUTSIDE 03-04 UTC. BTC breakout
+  (magic 20260917): **4 trades, 2W/2L, +$5.55** (only profitable bot). BTC
+  swing (magic 20260916): **first trades ever** — 2 SELLs 09-17, 1 SL'd
+  −$8.02 (ATR SL 798 pts), 1 open. Balance **$71.82** (from $100 reset).
+  Filed: [[2026-09-17 Bot Week Session]].
+- **Root causes** (filed [[2026-09-17 Loss Causes]]): (1) **v3.25 regressed
+  the hour window to `0/0 = all day`** — the wiki never documented v3.25
+  (stale 5 days); (2) trend-continuation entries now 4W/9L = 30.8% < 33.3%
+  breakeven; (3) $5 SL = 5 pts = inside M15 noise (5 of 7 losers died on
+  5–8 pt wiggles); (4) 09-16 21:00 UTC crash (~132 pts in 1h, M15 bars
+  4–6× normal range) preceded 3 losing trades; (5) 09-15 21:48 trade risked
+  $7.72 not $5 — open question.
+- **Build v3.26 gold** (THE FOUR FIXES, per the header plan): (1) hour
+  window default restored **3-4 UTC**; (2) **ATR-based SL/TP** default ON
+  (SL 1.5× / TP 3.0× M15 ATR(14); fixed $5/$10 via `InpUseATRSL=false`);
+  (3) **volatility spike filter** — 30-min entry pause after a closed M15
+  bar's range > 3× the 20-bar average; (4) **fresh guard on trend entries**
+  (previous M1 bar must close inside the channel). Init print now shows
+  version, hour window, SL/TP mode, filter state. **Compiled 0 errors/0
+  warnings** (MetaEditor, 636 ms).
+- **Wiki sync**: entities updated (gold v3.26 config + week results, BBH
+  week results, BSH first trades, XM accounts $71.82), index + log updated.
+- **Open questions**: what set the 09-15 21:48 SL at 7.72 pts? Does BSH
+  stay on the chart (ATR SL ~$8/loss)? Does 03-04 UTC + channel-break-only
+  trade often enough?
+
+---
+
 ## [2026-09-12] analysis+build | Hour-window discovery + v3.24/v1.06 hard-cap build
 
 - **Analysis**: volatility/channel-range filter tested on 21 months — **DEAD**

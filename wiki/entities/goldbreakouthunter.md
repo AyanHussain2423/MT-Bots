@@ -21,7 +21,7 @@ credible approaches found in research:
 Source: `D:\Workspace\Trader-knowledge\GoldBreakoutHunter_Zaid.mq5` (also
 deployed to the MT5 Experts folder).
 
-## Configuration (as deployed 2026-09-12, v3.24)
+## Configuration (as deployed 2026-09-17, v3.26)
 
 | Setting | Value |
 |---|---|
@@ -31,13 +31,14 @@ deployed to the MT5 Experts folder).
 | Channel period | 20 (Donchian breakout range, M1) |
 | EMA | 50 (trend filter) — **on M15 since v3.10** (was M1) |
 | Trend filter TF | **M15** (v3.10 fix) |
-| SL / TP | **Fixed $5 / $10** (2:1 RR, v3.14 — user directive) |
+| SL / TP | **ATR-based** (v3.26): SL = 1.5× M15 ATR(14), TP = 3.0× (2:1 RR). Fixed $5/$10 fallback via `InpUseATRSL=false` (v3.14 user directive) |
 | Max concurrent positions | **1** (no hedging possible) |
 | Max trades per day | **4** |
 | Re-entry gate | **Stop-out penalty** (v3.20 — replaces the 15-min cooldown): after an SL, same-direction entries need a new channel extreme; after a TP, no restriction |
 | Daily counter | **Restored from history on init + refreshed every minute** (v3.21 `CountTradesToday()`; v3.24 refresh in the gate — the cap now holds across re-attaches and manual resets) |
-| Hour window | **03-04 UTC** (v3.24 — `InpStartHourUTC`/`InpEndHourUTC`; the only window positive in both 2025 and 2026, +0.81/trade over 21 months; see [[Hour Window Analysis 2026-09-12]]) |
-| Trend continuation | **ON** (v3.16): enter near the channel edge when price is ≥10 pts from EMA50 (v3.17 distance), max 3/day |
+| Hour window | **03-04 UTC** (v3.24, restored as default in v3.26 — `InpStartHourUTC`/`InpEndHourUTC`; the only window positive in both 2025 and 2026, +0.81/trade over 21 months; see [[Hour Window Analysis 2026-09-12]]). ⚠️ v3.25 regressed the defaults to `0/0 = all day` — all 7 trades 09-12→09-17 fired outside 03-04 UTC |
+| Trend continuation | **ON** (v3.16): enter near the channel edge when price is ≥10 pts from EMA50 (v3.17 distance), max 3/day. **Fresh guard added v3.26** — previous M1 bar must close inside the channel (no chasing extended moves) |
+| Volatility spike filter | **ON** (v3.26): pause entries 30 min after a closed M15 bar's range exceeds 3× the 20-bar average (`InpVolatilitySpikeMult`, `InpVolatilityPauseMin`; multiplier 0 = off) |
 | Kill switch | **+$32 profit / −$50 loss** (v3.11, user directive) |
 | Daily cutoff | 23:59 local (test setting) |
 | Reopen guard | 20 min after daily market break (v3.13) |
@@ -62,14 +63,20 @@ deployed to the MT5 Experts folder).
   fading the trend (the lesson from the [[2026-09-08 Loss Review]]). M15
   EMA50 since v3.10; **EMA slope** (3-bar smoothed, v3.15) + **H1 confirm**
   (v3.13) gate channel breaks.
-- **Trend continuation (v3.16–v3.18)**: catches slow grinds the channel
-  break misses — in a grind the channel low ratchets down with price, so
-  price never "breaks" it. When price is ≥ `InpTrendDistance` (10 pts) from
-  the EMA50 and within `InpChannelProximity` (5 pts) of the channel edge,
-  enter near the edge. Trend entries use **raw** price-vs-EMA50 (v3.18 fix
-  — the slope filter was silently blocking them).
-- **Fixed-money SL/TP (v3.14)**: $5 SL / $10 TP converted to price via tick
-  value/size — stays correct for any symbol/lot.
+- **Trend continuation (v3.16–v3.18, +v3.26 fresh guard)**: catches slow
+  grinds the channel break misses — in a grind the channel low ratchets
+  down with price, so price never "breaks" it. When price is ≥
+  `InpTrendDistance` (10 pts) from the EMA50 and within `InpChannelProximity`
+  (5 pts) of the channel edge, enter near the edge. Trend entries use
+  **raw** price-vs-EMA50 (v3.18 fix — the slope filter was silently
+  blocking them). **v3.26**: trend entries now also require the previous M1
+  bar to have closed inside the channel (fresh guard) — no entries when
+  price is already extended past the edge (trend entries were 4W/9L =
+  30.8% < 33.3% breakeven since 09-11).
+- **SL/TP (v3.26)**: **ATR-based by default** — SL = 1.5× M15 ATR(14), TP =
+  3.0× (2:1 RR), so stops sit outside the M15 noise (the $5 fixed SL was
+  inside it — 5 of 7 losers 09-12→09-17 died on 5–8 pt wiggles). Fixed
+  $5/$10 (v3.14) remains via `InpUseATRSL=false`.
 - **Stop-out penalty (v3.20)**: after an SL, same-direction entries need a
   new channel extreme (the market must prove the bounce failed); after a TP
   there is no restriction. See [[Stop-Out Penalty]].
@@ -77,7 +84,10 @@ deployed to the MT5 Experts folder).
 ## Risk model
 
 - 0.01 lot = 1 oz of gold; $1 ≈ 1.00 price move.
-- **Fixed $5 SL / $10 TP** (2:1 RR, v3.14 user directive).
+- **ATR-based SL/TP (v3.26 default)**: SL = 1.5× M15 ATR(14), TP = 3.0× —
+  wider stops than the old $5, so per-loss risk is higher (~$8–20) but
+  noise-stops drop. Fixed $5/$10 via `InpUseATRSL=false` (v3.14 user
+  directive).
 - [[Kill Switch]]: daily P/L guard — closes all and stops the day at
   **+$32 profit** or **−$50 loss** (v3.11, user directive).
 - [[Daily Cutoff]]: at **23:59 local** closes all positions, deletes pending
@@ -108,6 +118,13 @@ deployed to the MT5 Experts folder).
 | 2026-09-11 | SELL (trend cont.) | 4314.60 | 4319.60 | 4304.60 | 4319.86 (SL hit, 03:01:03) | **−$5.26** |
 | 2026-09-11 | SELL (trend cont.) | 4309.21 | 4314.45 | 4299.21 | 4314.47 (SL hit, 07:08:07) | **−$5.26** |
 | 2026-09-11 | BUY (channel break, marginal) | 4396.61 | 4401.85 | 4386.61 | ~4401.85 (SL hit, ~16:59) | **−$5.24** |
+| 2026-09-15 | BUY (trend cont.) | 4308.31 | 4300.59 | — | 4300.53 (SL hit, 22:14:14) | **−$7.78** ⚠️ |
+| 2026-09-16 | SELL (trend cont.) | 4281.03 | 4286.89 | — | 4286.89 (SL hit, 04:14:10) | **−$5.86** |
+| 2026-09-16 | BUY (trend cont.) | 4304.68 | — | 4314.49 | 4314.60 (TP hit, 05:36:15) | **+$9.92** ✅ |
+| 2026-09-16 | BUY (trend cont.) | 4313.35 | — | 4323.45 | 4323.60 (TP hit, 06:00:03) | **+$10.25** ✅ |
+| 2026-09-17 | SELL (trend cont.) | 4261.06 | 4266.04 | — | 4266.07 (SL hit, 01:32:47) | **−$5.01** |
+| 2026-09-17 | BUY (trend cont.) | 4310.23 | 4305.20 | — | 4305.11 (SL hit, 04:54:20) | **−$5.12** |
+| 2026-09-17 | SELL (trend cont.) | 4287.39 | 4292.48 | — | 4292.58 (SL hit, 05:19:40) | **−$5.19** |
 
 **Day total (2026-09-09): +$3.99 for v3 across 7 trades — 3W/4L, 42.9% win
 rate** (wins +$8.36/+$8.13/+$17.00 = +$33.49; losses −$5.21/−$2.64/−$3.91/
@@ -145,6 +162,17 @@ net **+$10.39**. The cap-bug trades (#5, #6, #7) all lost. Fixed in v3.21
 analysis — all 6 sells were trend-continuation entries (the channel-break
 path never fired), and the 3/day trend-continuation counter was also
 violated by re-attach resets (residual gap in v3.21).
+
+**2026-09-12 → 09-17 (v3.25, all-day window): 7 trades, 2W/5L, net −$8.79 →
+balance $71.82.** All 7 entries were trend-continuation (`GBH BUY T`/`SELL
+T`); the channel-break path never fired. **All 7 fired OUTSIDE 03-04 UTC** —
+v3.25 had regressed the hour-window defaults to `0/0 = all day`. Trade #1
+(09-15 21:48 BUY) risked $7.72, not $5 (SL 7.72 pts — root cause unknown,
+flagged). The two wins (09-16 05:31/05:37 BUYs, +$9.92/+$10.25) were the
+only clean trades. Trades #5/#6/#7 (09-17) fired in the aftermath of the
+09-16 21:00 UTC crash (gold fell 4367 → 4235, ~132 pts in an hour). Full
+ingest: [[2026-09-17 Bot Week Session]]; analysis: [[2026-09-17 Loss
+Causes]].
 
 First verified live trade for the breakout strategy: sold when price broke
 the 20-bar box bottom (DistLo −0.07), price fell $8, TP captured in ~39
@@ -188,11 +216,15 @@ it; both positions hit TP within 12 seconds of each other at 22:36.
 | 2026-09-11 | **v3.21 daily counter restored on init** — `g_tradesToday` was memory-only; every re-attach reset it to 0, so the 4/day cap never held across restarts (09-11: 7 gold trades fired on one server day; trades #5/#6/#7 all lost = −$15.76). OnInit now calls `CountTradesToday()` (counts today's `DEAL_ENTRY_IN` deals with our magic). **Residual gap**: `g_trendEntriesToday` still resets on re-attach (3/day trend-continuation sub-cap was violated 09-11). |
 | 2026-09-11 | **v3.22/v3.23 reset override** — `InpResetDailyCounters` input (one-shot per server day via GlobalVariable). **Contributed to the 09-11 7-trade day**: attaching with reset=true zeroed the counter mid-day, restarting the 4/day cap. |
 | 2026-09-12 | **v3.24 hour window + hard cap** — (1) `InpStartHourUTC`/`InpEndHourUTC` (default 3-4 UTC): the only hour window positive in both 2025 (+0.95) and 2026 (+0.67) over 21 months; all-hours expectancy −0.11. (2) daily cap refreshed from history every minute — holds across re-attaches and manual resets. (3) limit message printed once per day. (4) trend-entry comments tagged `GBH BUY T`/`GBH SELL T` + `CountTrendEntriesToday()` restores the 3/day trend cap (closes the v3.21 residual gap). Compiled 0/0, deployed. |
+| 2026-09-17 | **v3.25 (regression, never documented in wiki)** — hour-window defaults changed to `0/0 = all day` (comment: "0/0 = all day"). All 7 trades 09-12→09-17 fired outside 03-04 UTC; net −$8.79. The wiki was stale for 5 days (still documented v3.24). |
+| 2026-09-17 | **v3.26 THE FOUR FIXES** — (1) hour window default restored to **3-4 UTC**; (2) **ATR-based SL/TP** default ON (SL = 1.5× M15 ATR(14), TP = 3.0×; fixed $5/$10 via `InpUseATRSL=false`); (3) **volatility spike filter** — 30-min entry pause after a closed M15 bar's range > 3× the 20-bar average (catches events like the 09-16 21:00 ~132-pt crash); (4) **fresh guard on trend entries** — previous M1 bar must close inside the channel. Init print now reports version, hour window, SL/TP mode, and filter state. Compiled 0 errors/0 warnings, 2026-09-17. |
 
 ## Related
 
 - [[BTCBreakoutHunter]] — the BTC port of this bot.
 - [[Stop-Out Penalty]] — the re-entry gate (v3.20).
+- [[2026-09-17 Loss Causes]] — the 09-12→09-17 failure analysis + v3.26 fixes.
+- [[2026-09-17 Bot Week Session]] — the week's source ingest.
 - [[GoldHunterPro Small]] — the RSI+EMA+ATR scalper this breakout bot is a
   complementary alternative to.
 - [[AMN Bot Spec]] — the separate AMN sweep workstream.
@@ -208,6 +240,8 @@ it; both positions hit TP within 12 seconds of each other at 22:36.
 - **EA / Expert Advisor** — an MQL5 program that automates trading.
 - **Magic number** — numeric tag on orders so the EA only manages its own
   trades.
-- **ATR** — Average True Range (14), a volatility measure. *Historical*:
-  ATR-based SL/TP replaced by fixed $5/$10 in v3.14.
+- **ATR** — Average True Range (14), a volatility measure. Used for SL/TP
+  sizing since v3.26 (SL = 1.5×, TP = 3.0× M15 ATR). *Historical*: ATR-based
+  SL/TP was replaced by fixed $5/$10 in v3.14, then restored as the default
+  in v3.26.
 - **RR** — risk:reward ratio (see [[Risk Reward]]).

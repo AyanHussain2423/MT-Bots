@@ -49,6 +49,15 @@ time cooldown. See [[GoldBreakoutHunter]] and [[Stop-Out Penalty]].
 | Date | Trade | Entry | SL | TP | Exit | Result |
 |---|---|---|---|---|---|---|
 | 2026-09-11 | SELL | 77048.45 | 77548.45 | 76048.45 | 77555.45 (SL hit, 15:37:21) | **−$5.07** |
+| 2026-09-14 | BUY | 78589.65 | — | — | 79150.95 (KillSwitch/Cutoff close, 21:29:01) | **+$5.61** ✅ |
+| 2026-09-14 | BUY | 79232.35 | — | — | 78730.05 (SL hit, 09-15 00:59:13) | **−$5.02** (−$0.32 swap) |
+| 2026-09-15 | SELL | 77800.55 | — | — | 76794.15 (TP hit, 11:08:05) | **+$10.06** ✅ |
+| 2026-09-15 | SELL | 75837.35 | — | — | 76347.70 (SL hit, 18:24:49) | **−$5.10** |
+
+**Week 09-12 → 09-17: 4 trades, 2W/2L, net +$5.55** — the only profitable
+bot of the week. 2:1 RR working as designed (wins +$5.61/+$10.06, losses
+−$5.02/−$5.10). No trades 09-16/09-17 (setup didn't fire). No code changes
+this week (still v1.06).
 
 **First trade ever** — fired 01:30 UTC after ~30h attached (v1.00 09-10
 21:35 → v1.04 00:38). SELL 0.01 BTCUSD @ 77048.45, SL/TP 500/1000 points =
