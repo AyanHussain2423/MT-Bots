@@ -182,3 +182,7 @@ and strategy research. Every trade is ingested and linted.
   ATR SL on $100 = 8–13% risk/trade (only 27.6% of bars fit $5 risk);
   recommendation: fund to ~$300–500, stay at 0.01 lots until the v3.27
   filtered sample proves f* > 0 on ≥ 30 trades.
+- [[Layer 2 MC Drawdown]] — first MC pass on the **real MT5 deal history**
+  (44 bot trades, 10,000 shuffles): GBH fails the envelope (1.24% ruin,
+  28% kill-switch hits, p95 DD 82.6%), BBH fits (0% ruin, p95 DD 34.4%);
+  pooled Kelly is misleading (GHP's 3 wins fake the edge) — size per bot.

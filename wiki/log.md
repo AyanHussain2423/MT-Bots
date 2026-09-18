@@ -5,7 +5,32 @@ wiki. Newest entries go at the top.
 
 ---
 
-## [2026-09-18] ingest | 8 verified papers downloaded, extracted, ingested + repo clone-check
+## [2026-09-18] build | Layer 2 MC drawdown — real trade list, per-bot verdicts
+
+- **Pulled full MT5 deal history (10 days) via MCP** → extracted **44 bot
+  trades** (magic ≠ 0, profit ≠ 0) into `raw/trades/2026-09-18-bot-trades-mt5.csv`
+  (immutable): GBH 29, BBH 9, BSH 2, GHP 3, GBH_old 1.
+- **Built `scripts/layer2_mc_drawdown.py`** (10,000 shuffles with
+  replacement, start $100, kill switch −$50): max DD, time under water,
+  ruin, kill-switch hit rate, final-equity percentiles. Fixed a per-trade
+  vs per-sim kill counter bug; added `--bot` filter.
+- **Per-bot verdicts (the honest view — never pool bots for Kelly)**:
+  - **GBH: FAIL** — 29 trades, 31% WR, RR 1.87, Kelly f* = **−0.058**;
+    MC: p95 DD 82.6%, ruin 1.24%, kill switch hit in **28%** of sims.
+    The gold bot's realized distribution is not survivable at $100/0.01.
+  - **BBH: OK** — 9 trades, 33% WR, RR 1.92, f* = −0.014; MC: p95 DD
+    34.4%, 0% ruin, 0% kill hits. Envelope fits the account.
+  - **BSH: too few trades** (2, both lost) to judge.
+  - **Pooled f\* = +0.04 is a mirage** — GHP (retired, 3 wins +$49.02)
+    fakes the edge; live bots are all ≤ 0.
+- **Filed [[Layer 2 MC Drawdown]]**: tables, verdicts, and the build
+  implications — kill switch is doing real work (28% of GBH sims breach
+  −$50), Layer 1 gate confirmed (no bot sizes up), fix path is entry
+  quality not sizing, fat-tail refinement (Lévy/tempered-stable) deferred.
+- **Next**: Layer 3 walk-forward — needs the 21-month gold CSV re-downloaded
+  (temp was wiped; pull M15 via MT5 MCP in chunks or re-export).
+
+---
 
 - **Downloaded 8 verified arxiv PDFs** into `raw/strategy/quant/` (all
   verified %PDF, one re-download after truncation): 2608.23416 (Axiomatic
