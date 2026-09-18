@@ -171,8 +171,7 @@ v3.25 had regressed the hour-window defaults to `0/0 = all day`. Trade #1
 flagged). The two wins (09-16 05:31/05:37 BUYs, +$9.92/+$10.25) were the
 only clean trades. Trades #5/#6/#7 (09-17) fired in the aftermath of the
 09-16 21:00 UTC crash (gold fell 4367 → 4235, ~132 pts in an hour). Full
-ingest: [[2026-09-17 Bot Week Session]]; analysis: [[2026-09-17 Loss
-Causes]].
+ingest: [[2026-09-17 Bot Week Session]]; analysis: [[2026-09-17 Loss Causes]].
 
 First verified live trade for the breakout strategy: sold when price broke
 the 20-bar box bottom (DistLo −0.07), price fell $8, TP captured in ~39

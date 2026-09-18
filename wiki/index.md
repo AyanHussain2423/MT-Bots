@@ -30,6 +30,21 @@ and strategy research. Every trade is ingested and linted.
 - [[Adeel | AMN Trading]] — Adeel Asghar: SMC/ICT liquidity-sweep
   day-trader. YouTube, Instagram, TikTok, mentorship ($99/mo), 6-Tap
   indicator, AMN Zones Guide. The strategy we are encoding into a bot.
+- [[Quant Resources — Kelly & Volatility Sizing]] — 10 resources (Garch-Method,
+  deltaray-io/kelly-criterion, risk-constrained Kelly, Kelly papers) for
+  layer 1 of the quant build.
+- [[Quant Resources — Monte Carlo Drawdown]] — 10 resources (MonteForex,
+  alpha-engine, Hilpisch) for layer 2 drawdown estimation.
+- [[Quant Resources — Walk-Forward Framework]] — 10 resources (pyalloq,
+  quanteval, oos-lab, double-OOS paper) for layer 3 honest OOS testing.
+- [[Quant Resources — Entry Filters]] — 10 resources (SR mapping, Livermore
+  state machine, two-filter framework, SMC guide) for layer 4.
+- [[Quant Resources — Quant Math Books & Papers]] — 10 books/papers
+  (archive.org texts, MIT OCW, Sutton & Barto, Jansen) — the theory layer.
+- [[Quant Resources — ML Regression & Training]] — 10 resources (Jansen
+  repo+book, Forex-LSTM-Models, awesome lists) for the ML entry-filter layer.
+- [[Quant Resources — Risk Management]] — 10 resources (Riskfolio-Lib,
+  FinancePy, CME handbook) for the risk layer.
 
 ## Entities
 
@@ -83,6 +98,16 @@ and strategy research. Every trade is ingested and linted.
   liquidity sweep → first tap → 50% entry).
 - [[Liquidity Sweep]] — the sweep mechanic and how it differs from a break
   of structure.
+- [[Kelly Criterion]] — edge-based position sizing (f\*, fractional Kelly);
+  layer 1 of the quant build.
+- [[Volatility Targeting]] — size by risk, not by edge (ATR/GARCH forecast
+  vol); layer 1 of the quant build.
+- [[Monte Carlo Simulation]] — resampling trade lists to estimate worst
+  realistic drawdown and losing streaks; layer 2 of the quant build.
+- [[Walk-Forward Analysis]] — rolling train/test OOS testing so parameters
+  never see the answer; layer 3 of the quant build.
+- [[Overfitting]] — fitting noise, not signal; the VP sweep is the wiki's
+  own proof. The cautionary frame for all quant work.
 
 ## Synthesis
 
@@ -103,3 +128,6 @@ and strategy research. Every trade is ingested and linted.
 - [[2026-09-17 Loss Causes]] — why the 09-12→09-17 trades lost (hour window
   off, trend entries below breakeven, $5 SL inside the noise, crash
   aftermath) and the four v3.26 fixes.
+- [[Quant Math Build Plan]] — the locked 4-layer build (Kelly/volatility
+  sizing → Monte Carlo drawdown → walk-forward → entry filters), the
+  terminology anchor, and the resource map.

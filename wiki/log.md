@@ -5,7 +5,30 @@ wiki. Newest entries go at the top.
 
 ---
 
-## [2026-09-17] ingest+analysis+build | Bot week 09-12→09-17 + v3.26 four fixes
+## [2026-09-18] ingest | Quant resource catalog (7 topics, 70 links) + build plan
+
+- **User directive**: "wiki all these sources up first, understand, keep
+  consistent terminology, constantly update wiki and lint" — the quant math
+  catalog for the gold bot build.
+- **Ingested 7 source pages** (one per topic, 10 resources each, all URLs
+  verified from user's catalog): Kelly/volatility sizing, Monte Carlo
+  drawdown, walk-forward framework, entry filters, quant math books/papers,
+  ML regression & training, risk management.
+- **5 new concept pages** (the terminology anchor): [[Kelly Criterion]],
+  [[Volatility Targeting]], [[Monte Carlo Simulation]], [[Walk-Forward Analysis]], [[Overfitting]] — every quant term now has one definition.
+- **Filed [[Quant Math Build Plan]]** — the user-approved locked order:
+  1) Kelly/volatility sizing, 2) Monte Carlo drawdown, 3) walk-forward
+  framework, 4) entry filters. Includes the terminology table (the "same
+  terms" contract), data/tooling notes, and status checkboxes.
+- **Consistency notes**: VP sweep reframed as the wiki's own [[Overfitting]]
+  proof (30 configs, best = noise); v3.27 ATR SL/TP documented as the
+  volatility-targeting foundation; 03-04 UTC window analysis cross-linked
+  to the regime-gating candidate.
+- **Open questions**: user's book/PDF materials for `raw/strategy/` still
+  pending — layer 1 design starts once they arrive (or on user approval
+  from the live trade sample).
+
+---
 
 - **Ingest**: pulled deals for all three bots (account 169324224, MCP
   09-17 ~21:50 UTC). Gold (magic 20260915): **7 trades, 2W/5L, −$8.79** —
