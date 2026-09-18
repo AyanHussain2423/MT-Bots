@@ -150,3 +150,8 @@ and strategy research. Every trade is ingested and linted.
 - [[Quant Math Build Plan]] — the locked 4-layer build (Kelly/volatility
   sizing → Monte Carlo drawdown → walk-forward → entry filters), the
   terminology anchor, and the resource map.
+- [[Layer 1 Sizing Design]] — first design pass: Kelly from the live sample
+  is **negative** (33.3% WR, 1.74 RR → f* ≈ −0.05 → no edge to size up);
+  ATR SL on $100 = 8–13% risk/trade (only 27.6% of bars fit $5 risk);
+  recommendation: fund to ~$300–500, stay at 0.01 lots until the v3.27
+  filtered sample proves f* > 0 on ≥ 30 trades.

@@ -5,7 +5,30 @@ wiki. Newest entries go at the top.
 
 ---
 
-## [2026-09-18] ingest | Quant PDFs downloaded, verified, extracted + 8 per-document pages
+## [2026-09-18] synthesis | Layer 1 sizing design (Kelly + vol targeting)
+
+- **Started layer 1 of [[Quant Math Build Plan]]** per user directive
+  ("then start Layer 1 design"). Inputs: live gold sample (21 trades
+  09-09→09-17), 21-month M1 CSV (744,518 bars → 49,636 M15), 5 sizing
+  papers.
+- **Kelly edge check — negative**: 7W/14L (33.3% WR), realized RR 1.74 →
+  f* = p − q/b ≈ **−0.05**. At 33.3% WR the bot needs RR ≥ 2.0 to break
+  even; it realized 1.74. Sizing scales edge, it cannot create it → stay
+  at 0.01 lots until the v3.27 filtered sample proves f* > 0.
+- **Volatility reality check** (CSV): M15 ATR(14) median 5.65 pts, p75
+  8.71, p90 12.24. v3.26 SL = 1.5×ATR → **$8.48 median / $13.07 p75 risk
+  per trade** = 8.5–13.1% of the $100 account. Only 27.6% of bars fit a
+  $5 risk budget; 03-04 UTC vol barely lower (5.22 vs 5.65). D1 ATR p90 =
+  $136.69 — the 09-16 crash was a ~1-in-10-day event, not a black swan.
+- **Filed [[Layer 1 Sizing Design]]**: the formula to implement (half-Kelly
+  × 2% cap, 0.01 floor, SL = 1.5×ATR), the 4-option decision table, and
+  the measurement plan (Kelly gate: f* > 0 on ≥ 30 trades, monthly
+  recompute).
+- **Decision flagged for user**: ATR stop + $100 account are incompatible
+  at 0.01 lots — recommendation **C: fund demo to ~$300–500** so 1.5×ATR
+  ≈ 2–3% risk; until then 0.01 lots regardless of Kelly.
+
+---
 
 - **User directive**: "i gave u links download and extract and wiki ingest
   and lint" — download the catalog's books/PDFs into `raw/strategy/quant/`,
