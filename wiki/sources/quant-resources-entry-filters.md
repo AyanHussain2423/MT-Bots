@@ -10,7 +10,7 @@ sources:
   - https://www.project-kintoun.com/
   - https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2731722
   - https://www.jstor.org/stable/2328889
-  - https://arxiv.org/abs/1807.01619
+  - https://arxiv.org/abs/2404.00012
   - https://www.researchgate.net/publication/334604635_Herangehensweise_zur_quantitativen_Analyse_und_Optimierung_von_Filtern
   - https://www.tradingsystemlab.com/wp-content/uploads/2018/03/Entry-Filters-in-Trading-Systems.pdf
   - https://www.smartmoneyconcepts.com/free-guide
@@ -32,7 +32,7 @@ sizing/drawdown/walk-forward are solid (see [[Quant Math Build Plan]]).
 | 4 | [Project Kintoun](https://www.project-kintoun.com/) | Article | Trading system project — filter design |
 | 5 | [Two-filter trading strategies](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2731722) | Paper | The classic two-filter framework (trend + entry filter) |
 | 6 | [Filter rules, moving averages, support/resistance](https://www.jstor.org/stable/2328889) | Paper | Academic filter-rule evidence |
-| 7 | [Sentiment as a risk filter](https://arxiv.org/abs/1807.01619) | Paper | Sentiment-based risk filter |
+| 7 | [Stress index strategy enhanced with financial news sentiment](https://arxiv.org/abs/2404.00012) | Paper | Sentiment + stress-index risk-on/risk-off filter |
 | 8 | [Quantitative analysis and optimization of filters](https://www.researchgate.net/publication/334604635_Herangehensweise_zur_quantitativen_Analyse_und_Optimierung_von_Filtern) | Paper | Filter optimization methodology |
 | 9 | [Entry Filters in Trading Systems](https://www.tradingsystemlab.com/wp-content/uploads/2018/03/Entry-Filters-in-Trading-Systems.pdf) | PDF | Practical entry-filter design |
 | 10 | [SMC Guide](https://www.smartmoneyconcepts.com/free-guide) | PDF | Smart-money concepts — the AMN-style liquidity framework (see [[Liquidity Sweep]]) |

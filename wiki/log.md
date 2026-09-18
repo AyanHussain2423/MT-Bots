@@ -5,7 +5,52 @@ wiki. Newest entries go at the top.
 
 ---
 
-## [2026-09-18] ingest | Quant resource catalog (7 topics, 70 links) + build plan
+## [2026-09-18] ingest | Quant PDFs downloaded, verified, extracted + 8 per-document pages
+
+- **User directive**: "i gave u links download and extract and wiki ingest
+  and lint" — download the catalog's books/PDFs into `raw/strategy/quant/`,
+  extract, ingest each as a wiki source, lint.
+- **CRITICAL FINDING — the catalog's arxiv IDs were hallucinated by the
+  original web search**: 9 of 10 downloaded papers were unrelated (string
+  theory, cosmology, nuclear physics, Alzheimer's, osteoarthritis, contact
+  tracing, SnSe, NV-center, math functionals). Verified correct IDs via
+  websearch and re-downloaded: **2309.09094** (sizing), **2002.03448**
+  (Kelly→Lévy), **2602.10785** (double-OOS walk-forward, arxiv version of
+  SSRN 3135062), **1510.05123** (optimal growth; the catalog's UCL link was
+  an osteoarthritis paper), **2404.00012** (sentiment risk filter).
+  **2104.04041** = CLVSA (real finance LSTM paper, kept under correct name).
+- **Fixed the wrong URLs in 5 catalog pages** (kelly-sizing, walk-forward,
+  entry-filters, ml-regression, quant-math) with flagged-correction notes;
+  non-arxiv items re-pointed: Ritter ML-for-Trading → SSRN 3015609, Večeř
+  analytical Kelly → SSRN 5121817, Portfolio Theory & Arbitrage → AMS
+  bookstore (Karatzas & Kardaras), Signature Methods → 2207.13136 (closest
+  verified match).
+- **Downloaded**: 5 verified arxiv PDFs + Sutton & Barto RL 2nd ed (4.1 MB)
+  + MIT OCW 15.450 full course site (16.8 MB zip → 33 PDFs). **Not
+  obtainable** (documented, not silently dropped): 4 archive.org books
+  (lending-restricted 401), CME handbook (IP-blocked), uv.es Monte Carlo
+  (404), tradingsystemlab + risktech PDFs (HTML only, no Wayback), SSRN
+  papers (bot-blocked, links kept), AMS book + Večeř article (paid).
+- **Extracted** all 6 verified papers + Sutton & Barto to
+  `C:\Users\ayan\AppData\Local\Temp\opencode\quant-extract\` (pypdf);
+  verified MIT lecture topics from PDF page 1s.
+- **Ingested 8 per-document source pages**:
+  [[Quant Paper — Kelly Sizing 2309.09094]],
+  [[Quant Paper — Kelly Lévy 2002.03448]],
+  [[Quant Paper — Double-OOS Walk-Forward 2602.10785]],
+  [[Quant Paper — Sentiment Risk Filter 2404.00012]],
+  [[Quant Paper — Optimal Growth 1510.05123]],
+  [[Quant Paper — CLVSA 2104.04041]],
+  [[Quant Book — Sutton & Barto RL]],
+  [[Quant Course — MIT 15.450 Analytics of Finance]] — each with key
+  content, build-plan application, and terminology linked to concept pages.
+- **MIT 15.450 lecture map** filed: lec 3 simulation (layer 2), lec 9
+  bootstrap (layer 2/3), lec 10 GARCH (layer 1), lec 4–6 dynamic portfolio
+  choice (layer 1), lec 7–8 MLE/GMM (layer 3).
+- **Next**: layer 1 (Kelly/volatility sizing) design — inputs ready (live
+  trade sample + 21-month CSV + the 5 sizing papers).
+
+---
 
 - **User directive**: "wiki all these sources up first, understand, keep
   consistent terminology, constantly update wiki and lint" — the quant math

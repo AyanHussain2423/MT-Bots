@@ -11,7 +11,7 @@ sources:
   - https://github.com/DaruFinance/quant-research-framework
   - https://github.com/endlesscheng/oos-lab
   - https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3135062
-  - https://arxiv.org/abs/1905.07539
+  - https://arxiv.org/abs/2602.10785
   - https://www.researchgate.net/publication/338752453_Walk-Forward_Cross-Validation
   - https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3073795
 ---
@@ -34,7 +34,7 @@ out-of-sample testing so no parameter choice ever sees the answer again
 | 5 | [quant-research-framework (DaruFinance)](https://github.com/DaruFinance/quant-research-framework) | GitHub | Backtester with walk-forward + robustness checks |
 | 6 | [oos-lab](https://github.com/endlesscheng/oos-lab) | GitHub | Out-of-sample testing lab |
 | 7 | [Double out-of-sample + walk-forward parameter optimization](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3135062) | Paper | The double-OOS technique (train → validate → test) |
-| 8 | [Walk-Forward Optimization Scheme](https://arxiv.org/abs/1905.07539) | Paper | Formal WFO scheme |
+| 8 | [Double out-of-sample + walk-forward parameter optimization (arxiv version)](https://arxiv.org/abs/2602.10785) | Paper | Formal WFO scheme — the arxiv version of #7 (Mroziewicz & Ślepaczuk) |
 | 9 | [Walk-Forward Cross-Validation](https://www.researchgate.net/publication/338752453_Walk-Forward_Cross-Validation) | Paper | WFCV — the rolling train/test procedure |
 | 10 | [Walk-Forward Methodology for Meta-Models](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3073795) | Paper | WFA applied to meta-models (fits our ML layer 4) |
 

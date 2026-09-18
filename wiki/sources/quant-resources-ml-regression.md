@@ -9,7 +9,7 @@ sources:
   - https://github.com/stefan-jansen/machine-learning-for-trading
   - https://github.com/huseinzol05/Stock-Prediction-Models
   - https://github.com/huseinzol05/Forex-LSTM-Models
-  - https://arxiv.org/abs/1810.09959
+  - https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3015609
   - https://archive.org/details/machinelearningf0000jans
   - https://github.com/dingran/quant-awesome-machine-learning-trading
   - https://github.com/georgezouq/awesome-ai-in-finance
@@ -31,11 +31,11 @@ model must pass [[Walk-Forward Analysis]] before it touches a live bot.
 | 3 | [machine-learning-for-trading (Stefan Jansen)](https://github.com/stefan-jansen/machine-learning-for-trading) | GitHub | The canonical ML-for-trading repo (2nd ed. companion) |
 | 4 | [Stock-Prediction-Models (huseinzol05)](https://github.com/huseinzol05/Stock-Prediction-Models) | GitHub | LightGBM + many model families for prediction |
 | 5 | [Forex-LSTM-Models (huseinzol05)](https://github.com/huseinzol05/Forex-LSTM-Models) | GitHub | LSTM models on forex — closest to our gold M1 data |
-| 6 | [Machine Learning for Trading (NYU)](https://arxiv.org/abs/1810.09959) | Paper | Survey of ML for trading |
+| 6 | [Machine Learning for Trading (Ritter, SSRN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3015609) | Paper | Survey of ML for trading |
 | 7 | [Machine Learning for Algorithmic Trading (2nd ed., Jansen)](https://archive.org/details/machinelearningf0000jans) | Book (archive.org) | Full textbook — the training methodology reference |
 | 8 | [Awesome-Quant-Machine-Learning-Trading](https://github.com/dingran/quant-awesome-machine-learning-trading) | List | Curated ML-trading resource list |
 | 9 | [Awesome AI in Finance](https://github.com/georgezouq/awesome-ai-in-finance) | List | Curated AI-finance resource list |
-| 10 | [Quantum ML for real-time market pattern recognition](https://arxiv.org/abs/2104.04041) | Paper | Pattern recognition (research frontier) |
+| 10 | [CLVSA: Convolutional LSTM variational seq2seq for trend prediction](https://arxiv.org/abs/2104.04041) | Paper | LSTM trend prediction — the catalog's "quantum ML" link was actually this |
 
 ## What to extract (for our bots)
 

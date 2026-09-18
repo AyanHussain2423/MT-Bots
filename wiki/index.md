@@ -45,6 +45,25 @@ and strategy research. Every trade is ingested and linted.
   repo+book, Forex-LSTM-Models, awesome lists) for the ML entry-filter layer.
 - [[Quant Resources — Risk Management]] — 10 resources (Riskfolio-Lib,
   FinancePy, CME handbook) for the risk layer.
+- [[Quant Paper — Kelly Sizing 2309.09094]] — sizing strategies in volatile
+  markets: VaR reduction, geometric-VaR/Kalman backtests, GARCH vol input.
+- [[Quant Paper — Kelly Lévy 2002.03448]] — Kelly from Bernoulli to Lévy
+  processes: the math for fractional Kelly under fat tails.
+- [[Quant Paper — Double-OOS Walk-Forward 2602.10785]] — parameterized
+  walk-forward windows + single-time OOS + bootstrap significance + cost
+  sensitivity (arxiv version of SSRN 3135062).
+- [[Quant Paper — Sentiment Risk Filter 2404.00012]] — stress index +
+  GPT-4 news sentiment risk-on/risk-off filter (Sharpe up, drawdown down).
+- [[Quant Paper — Optimal Growth 1510.05123]] — Kelly generalized to finite
+  carrying capacity; the non-ergodicity case for log-utility sizing.
+- [[Quant Paper — CLVSA 2104.04041]] — convolutional LSTM variational
+  seq2seq for trend prediction; KL-regularizer anti-overfit (the catalog's
+  "quantum ML" link, actually deep learning).
+- [[Quant Book — Sutton & Barto RL]] — the RL textbook: MDPs, TD learning,
+  exploration/exploitation; theory for the ML layer.
+- [[Quant Course — MIT 15.450 Analytics of Finance]] — 33 PDFs: simulation
+  methods, GARCH, bootstrap, dynamic portfolio choice, MLE/GMM — the math
+  backbone for layers 1–3.
 
 ## Entities
 
