@@ -69,6 +69,28 @@ and strategy research. Every trade is ingested and linted.
 - [[Quant Course — MIT 15.450 Analytics of Finance]] — 33 PDFs: simulation
   methods, GARCH, bootstrap, dynamic portfolio choice, MLE/GMM — the math
   backbone for layers 1–3.
+- [[Quant Paper — Axiomatic Trader 2608.23416]] — five axioms force a
+  five-stage canonical system: purged-block CVaR evaluation, deflated search,
+  robust fractional Kelly sizing (S5 = layer 1, S3 = layer 3).
+- [[Quant Paper — Drawdown Beyond Brownian 2608.00127]] — MC drawdown
+  framework from Sharpe: max drawdown/loss, time under water, recovery;
+  non-Gaussian + long-memory warnings (layer 2).
+- [[Quant Paper — Interpretable Hypothesis Trading 2512.12924]] — walk-forward
+  framework, 34 rolling test periods, honest p=0.34 result; regime-dependent
+  signals (layer 3 template).
+- [[Quant Paper — Quantum Classical ML DeFi 2510.15903]] — QML vs classical
+  ML on AMM/DeFi: no quantum edge; classical models match (layer 4 reality
+  check).
+- [[Quant Paper — Cluster Regression VI 2205.00605]] — variational-inference
+  cluster regression ≈ regime-aware forecasting (layers 1/4).
+- [[Quant Paper — Investing Is Compression 2604.10758]] — Kelly factors into
+  money + entropy + divergence; strategy comparison in bits (layer 1 theory).
+- [[Quant Paper — Drawdown Lévy 2011.06618]] — drawdown/duration simulation
+  in Lévy models via SBG coupling; Finance & Stochastics 2022 (layer 2,
+  fat tails).
+- [[Quant Paper — Tempered Stable Extrema 2103.15310]] — TSB-Alg MC for
+  extrema of tempered stable (CGMY) processes; Adv. Appl. Prob. 2023
+  (layer 2, fat tails).
 
 ## Entities
 

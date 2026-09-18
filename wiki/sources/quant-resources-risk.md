@@ -7,12 +7,12 @@ sources:
   - https://github.com/prashant-fintech/risklab
   - https://github.com/Cpy0114/Market-Risk-Quant-Portfolio
   - https://github.com/GraceLTQ/portfolio-risk-analytics
-  - https://github.com/benstaff/FinRL_DeepSeek
+  - https://github.com/benstaf/FinRL_DeepSeek
   - https://github.com/Osj1614/dualrssm
   - https://github.com/liangdabiao/autogen-financial-analysis
   - https://www.tradingview.com/support/solutions/43000561800-risk-management/
   - https://www.cmegroup.com/education/files/risk-management-handbook.pdf
-  - https://github.com/mvxddd/quantitative-risk-management
+  - https://github.com/mcf-long-short/quantitative-risk-management
 ---
 
 # Quant Resources — Risk Management
@@ -24,6 +24,9 @@ for the bots (drawdown limits, VaR, kill switch). Terminology anchored in
 > [!warning] Verification notes (2nd pass)
 > - Added: FinRL_DeepSeek, dualrssm (self-supervised risk factor model),
 >   autogen-financial-analysis.
+> - **Repo owner corrections (clone-check 2026-09-18)**: FinRL_DeepSeek is
+>   **benstaf** (not benstaff; 331★, paper arXiv:2502.07393);
+>   quantitative-risk-management is **mcf-long-short** (not mvxddd; 21★).
 > - CME handbook PDF remains IP-blocked from our network (see the
 >   2026-09-18 log entry).
 
@@ -34,12 +37,12 @@ for the bots (drawdown limits, VaR, kill switch). Terminology anchored in
 | 1 | [RiskLab](https://github.com/prashant-fintech/risklab) | GitHub | VaR, CVaR, stress testing — the risk toolkit |
 | 2 | [Market-Risk-Quant-Portfolio](https://github.com/Cpy0114/Market-Risk-Quant-Portfolio) | GitHub | Market risk quant portfolio — VaR/CVaR implementations |
 | 3 | [portfolio-risk-analytics](https://github.com/GraceLTQ/portfolio-risk-analytics) | GitHub | Portfolio risk analytics — drawdown and tail metrics |
-| 4 | [FinRL_DeepSeek](https://github.com/benstaff/FinRL_DeepSeek) | GitHub | FinRL + DeepSeek — RL risk-aware trading agents |
+| 4 | [FinRL_DeepSeek](https://github.com/benstaf/FinRL_DeepSeek) | GitHub | FinRL + DeepSeek — RL risk-aware trading agents |
 | 5 | [dualrssm (self-supervised risk factor model)](https://github.com/Osj1614/dualrssm) | GitHub | Self-supervised dual RSSM — risk factor extraction |
 | 6 | [autogen-financial-analysis](https://github.com/liangdabiao/autogen-financial-analysis) | GitHub | AutoGen multi-agent financial analysis |
 | 7 | [Risk Management Handbook (TradingView)](https://www.tradingview.com/support/solutions/43000561800-risk-management/) | Docs | Risk management best practices |
 | 8 | [Risk Management Handbook (CME)](https://www.cmegroup.com/education/files/risk-management-handbook.pdf) | PDF | CME risk handbook (IP-blocked for us) |
-| 9 | [quantitative-risk-management](https://github.com/mvxddd/quantitative-risk-management) | GitHub | Quant risk management — VaR, ES, backtesting |
+| 9 | [quantitative-risk-management](https://github.com/mcf-long-short/quantitative-risk-management) | GitHub | Quant risk management — VaR, ES, backtesting |
 
 ## What to extract (for our bots)
 

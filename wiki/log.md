@@ -5,6 +5,40 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-18] ingest | 8 verified papers downloaded, extracted, ingested + repo clone-check
+
+- **Downloaded 8 verified arxiv PDFs** into `raw/strategy/quant/` (all
+  verified %PDF, one re-download after truncation): 2608.23416 (Axiomatic
+  Trader, 97pp), 2608.00127 (Drawdown Beyond Brownian, 19pp), 2512.12924
+  (Interpretable Hypothesis Trading, 35pp), 2510.15903 (Quantum/Classical ML
+  DeFi, 14pp), 2205.00605 (Cluster Regression VI, 19pp), 2604.10758
+  (Investing Is Compression, 15pp), 2011.06618 (Drawdown Lévy, 45pp),
+  2103.15310 (Tempered Stable Extrema, 31pp).
+- **Extracted all 8** with pypdf to `quant-extract\batch2\`; abstracts +
+  metadata fetched from arXiv abs pages (authors, dates, journal refs:
+  Finance & Stochastics 2022 for 2011.06618, Adv. Appl. Prob. 2023 for
+  2103.15310).
+- **Ingested 8 per-document pages** with key content + build-plan mapping:
+  Axiomatic Trader → S5 robust fractional Kelly = layer 1, S3 purged-block
+  CVaR = layer 3; Drawdown Beyond Brownian → layer 2 MC framework with
+  non-Gaussian warning; Interpretable Hypothesis Trading → layer 3 template
+  (34 rolling periods, honest p=0.34); Quantum/Classical ML → layer 4
+  reality check (no quantum edge); Cluster Regression VI → regime-aware
+  forecasting; Investing Is Compression → Kelly = money+entropy+divergence;
+  Drawdown Lévy + Tempered Stable → layer 2 fat-tail drawdown math.
+- **Repo clone-check (GitHub API, 25 catalog repos)**: 23 exist as listed;
+  **2 owner corrections** — FinRL_DeepSeek is **benstaf** (331★, paper
+  arXiv:2502.07393), quantitative-risk-management is **mcf-long-short**
+  (21★). Risk page updated + flagged. Shallow-cloned 6 key repos (all OK):
+  kelly-criterion (Python pkg), Garch-Method (method doc), MarketRegimeNet
+  (466 files), backtest-engine (pyproject/uv), wf_optim_crypto_analysis (R +
+  DVC pipeline), AI-XAUUSD-Trading (108 files).
+- **Next**: layer 1 sizing implementation (Kelly gate + ATR sizing formula
+  from [[Layer 1 Sizing Design]]) — pending user funding decision; layer 2
+  MC resampler on the live trade list.
+
+---
+
 ## [2026-09-18] ingest | 2nd catalog pass — user-verified links, 7 topic pages rewritten
 
 - **User supplied a corrected, verified catalog** (7 topics) replacing the
