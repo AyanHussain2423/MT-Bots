@@ -30,21 +30,26 @@ and strategy research. Every trade is ingested and linted.
 - [[Adeel | AMN Trading]] — Adeel Asghar: SMC/ICT liquidity-sweep
   day-trader. YouTube, Instagram, TikTok, mentorship ($99/mo), 6-Tap
   indicator, AMN Zones Guide. The strategy we are encoding into a bot.
-- [[Quant Resources — Kelly & Volatility Sizing]] — 10 resources (Garch-Method,
-  deltaray-io/kelly-criterion, risk-constrained Kelly, Kelly papers) for
-  layer 1 of the quant build.
-- [[Quant Resources — Monte Carlo Drawdown]] — 10 resources (MonteForex,
-  alpha-engine, Hilpisch) for layer 2 drawdown estimation.
-- [[Quant Resources — Walk-Forward Framework]] — 10 resources (pyalloq,
-  quanteval, oos-lab, double-OOS paper) for layer 3 honest OOS testing.
-- [[Quant Resources — Entry Filters]] — 10 resources (SR mapping, Livermore
-  state machine, two-filter framework, SMC guide) for layer 4.
-- [[Quant Resources — Quant Math Books & Papers]] — 10 books/papers
-  (archive.org texts, MIT OCW, Sutton & Barto, Jansen) — the theory layer.
-- [[Quant Resources — ML Regression & Training]] — 10 resources (Jansen
-  repo+book, Forex-LSTM-Models, awesome lists) for the ML entry-filter layer.
-- [[Quant Resources — Risk Management]] — 10 resources (Riskfolio-Lib,
-  FinancePy, CME handbook) for the risk layer.
+- [[Quant Resources — Kelly & Volatility Sizing]] — 10 resources
+  (MarketRegimeNet, Garch-Method, kelly-criterion, Axiomatic Trader,
+  Investing Is Compression) for layer 1 of the quant build.
+- [[Quant Resources — Monte Carlo Drawdown]] — 9 resources (StrategyArena,
+  backtest-engine 10k-shuffle, Lévy drawdown papers 2011.06618/2103.15310)
+  for layer 2 drawdown estimation.
+- [[Quant Resources — Walk-Forward Framework]] — 8 resources (walk-forward
+  backtester, double-OOS paper + companion repo, oos-lab) for layer 3
+  honest OOS testing.
+- [[Quant Resources — Entry Filters]] — 6 resources (SR mapping NN,
+  freqtrade-regime-filter, Livermore state machine) for layer 4.
+- [[Quant Resources — Quant Math Foundation]] — 7 books/courses
+  (AMS Karatzas & Kardaras, Springer Signature Methods, MIT OCW, Sutton &
+  Barto, Jansen) — the theory layer.
+- [[Quant Resources — ML Regression]] — 8 resources (ST-AI-Trading,
+  market_forecaster, AI-XAUUSD-Trading, CLVSA, quantum/classical ML) for
+  the ML entry-filter layer.
+- [[Quant Resources — Risk Management]] — 9 resources (RiskLab,
+  Market-Risk-Quant-Portfolio, FinRL_DeepSeek, dualrssm, CME handbook) for
+  the risk layer.
 - [[Quant Paper — Kelly Sizing 2309.09094]] — sizing strategies in volatile
   markets: VaR reduction, geometric-VaR/Kalman backtests, GARCH vol input.
 - [[Quant Paper — Kelly Lévy 2002.03448]] — Kelly from Bernoulli to Lévy

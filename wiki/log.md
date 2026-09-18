@@ -5,6 +5,40 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-18] ingest | 2nd catalog pass — user-verified links, 7 topic pages rewritten
+
+- **User supplied a corrected, verified catalog** (7 topics) replacing the
+  hallucinated-ID list. Verified against arXiv/websearch:
+  - **Confirmed**: 2608.23416 (Axiomatic Trader), 2608.00127 (Drawdown
+    Beyond Brownian), 2512.12924 (Interpretable Hypothesis-Driven Trading),
+    2510.15903 (Quantum+Classical ML in DeFi), 2205.00605 (Cluster-based
+    Regression via Variational Inference), 2604.10758 (Investing Is
+    Compression — Kelly = money + entropy + divergence terms).
+  - **Corrected IDs**: drawdown-in-Lévy paper is **2011.06618** (not
+    2103.14744; Finance & Stochastics 2022, DOI 10.1007/s00780-022-00486-7);
+    tempered-stable extrema MC is **2103.15310** (not 2103.15265; Adv. Appl.
+    Prob. 2023, DOI 10.1017/apr.2023.1).
+  - **Still unconfirmed (flagged)**: 2210.10515 (game-theoretic portfolios),
+    2603.xxx (quantum rebalancing), plus ar5iv/scilit/TradingView
+    search-title entries.
+- **Owner-URL corrections**: SR_Mapping_NN → Mrizalfahlepi, ST-AI-Trading →
+  Sahiltheram, market_forecaster → gkeiel, Advanced_AI_ML_Trading_Framework
+  → CodingEye, oos-lab → OutOfSampleLab. **Signature Methods in Finance** is
+  a real Springer open-access book (10.1007/978-3-031-97239-3); Portfolio
+  Theory & Arbitrage → official AMS page (ams.org/books/gsm/214).
+- **New high-value finds**: tmr-crypto/wf_optim_crypto_analysis (companion
+  repo to our double-OOS paper), JonusNattapong/AI-XAUUSD-Trading
+  (gold-specific ML), ProgramComputer/earnings-trade-automation (10% Kelly).
+- **Rewrote all 7 topic pages** (kelly-sizing, monte-carlo, walk-forward,
+  entry-filters, quant-math, ml-regression, risk) with the verified catalog
+  + flagged-correction notes; index updated.
+- **Next**: download newly verified PDFs (2608.23416, 2608.00127,
+  2512.12924, 2510.15903, 2205.00605, 2604.10758, 2011.06618, 2103.15310)
+  per the standing extract-and-ingest pattern, or take up the user's offer
+  of abstract/BibTeX fetch or repo clone-check.
+
+---
+
 ## [2026-09-18] synthesis | Layer 1 sizing design (Kelly + vol targeting)
 
 - **Started layer 1 of [[Quant Math Build Plan]]** per user directive

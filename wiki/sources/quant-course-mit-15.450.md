@@ -61,4 +61,4 @@ extracted 2026-09-18: **33 PDFs** (10 lectures, 8 recitations, 6 assignments,
 
 - [[Monte Carlo Simulation]], [[Volatility Targeting]],
   [[Walk-Forward Analysis]], [[Kelly Criterion]], [[Quant Math Build Plan]],
-  [[Quant Resources — Quant Math Books & Papers]]
+  [[Quant Resources — Quant Math Foundation]]

@@ -55,5 +55,5 @@ for any future "bot as learning agent" work (layer 4 ML side).
 ## Related
 
 - [[Overfitting]], [[Quant Math Build Plan]],
-  [[Quant Resources — Quant Math Books & Papers]],
-  [[Quant Resources — ML Regression & Training]]
+  [[Quant Resources — Quant Math Foundation]],
+  [[Quant Resources — ML Regression]]

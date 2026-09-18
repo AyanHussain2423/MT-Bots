@@ -72,7 +72,7 @@ the VP sweep.
   machine, two-filter framework (trend + entry filter).
 - **Guardrail**: the VP sweep proved filters can zero out ALL trades — any
   filter must show OOS improvement over no-filter, not just different
-  trades. ML models ([[Quant Resources — ML Regression & Training]]) must
+  trades. ML models ([[Quant Resources — ML Regression]]) must
   pass walk-forward validation before live use.
 
 ## Terminology anchor (the "same terms" contract)

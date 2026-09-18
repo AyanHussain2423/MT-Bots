@@ -63,4 +63,4 @@ vanilla LSTM, and seq2seq-with-attention baselines.
 ## Related
 
 - [[Overfitting]], [[Walk-Forward Analysis]], [[Quant Math Build Plan]],
-  [[Quant Resources — ML Regression & Training]]
+  [[Quant Resources — ML Regression]]
