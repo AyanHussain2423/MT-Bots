@@ -107,10 +107,18 @@ delete a page, update `index.md` in the same pass.
 
 **Commit and push every wiki change to git at least once per day.** Prefer
 committing with each change batch (ingest, query filing, lint fixes) so the
-history stays granular. Never leave uncommitted wiki changes overnight. The
-remote is `https://github.com/zaidayub143-cmd/Trader-knowledge.git`
-(branch `main`). Credentials live in the local Git Credential Manager —
-never in the repo.
+history stays granular. Never leave uncommitted wiki changes overnight.
+Remotes (branch `main`): **`mt-bots`** (primary, 2026-09-17 user directive —
+`https://github.com/AyanHussain2423/MT-Bots.git`) and **`origin`**
+(`https://github.com/zaidayub143-cmd/Trader-knowledge.git`). Push to both on
+every change. Credentials live in the local Git Credential Manager — never
+in the repo.
+
+**Bot sources are tracked (2026-09-17, user directive):** the 3 active bots
+(`GoldBreakoutHunter_Zaid_v3.mq5`, `BTCBreakoutHunter_Zaid_v1.mq5`,
+`BTCSwingHunter_Zaid_v2.mq5`) plus their compiled `.ex5` binaries live in
+the repo so a new server can clone and run them. Old/retired bot versions
+stay local; the wiki's version history is their record.
 
 ## Golden rule
 

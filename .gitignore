@@ -20,8 +20,8 @@ config.json
 *.dat
 
 # ── Trading / MT5 artifacts (local only) ────────────────────────────────
-*.mq5
-*.ex5
+# Active bot sources + binaries ARE tracked (2026-09-17, user directive —
+# new 24/7 server clones the repo). Old/retired bots stay local.
 *.log
 *.csv
 !raw/trades/*.csv
