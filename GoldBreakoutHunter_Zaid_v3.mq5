@@ -6,7 +6,10 @@
 //|                        Marci Silfrain (trendline pullback) &      |
 //|                        Gold Prop Firm Robot (breakout)            |
 //|                                                                  |
-//|                        v3.26 - THE FOUR FIXES (09-17)             |
+//|                        v3.27 - ALL-DAY RESTORED (09-18)             |
+//|                        User decision: keep all-day trading (0-0).   |
+//|                        v3.26 fixes retained: ATR SL/TP, volatility  |
+//|                        spike filter, fresh guard on trend entries.  |
 //|                        1) HOUR WINDOW ENABLED: 03-04 UTC only.    |
 //|                           Backtest (21mo, 744k M1 bars): 03-04 is |
 //|                           the ONLY positive window in 2025+2026;  |
@@ -133,7 +136,7 @@
 //|                        market break (gap fakeouts).              |
 //+------------------------------------------------------------------+
 #property copyright "GoldBreakoutHunter"
-#property version   "3.26"
+#property version   "3.27"
 #property strict
 
 //--- Input parameters
@@ -159,9 +162,9 @@ input double   InpEMASlopeThreshold = 2.0;        // v3.16: min EMA50 decline (p
 input double   InpChannelProximity = 5.0;         // v3.16: enter when price within this many pts of channel edge
 input int      InpMaxTrendEntriesPerDay = 3;      // v3.16: max trend-continuation entries per day
 input double   InpTrendDistance = 10.0;           // v3.17: min price distance from EMA50 for trend entries
-input int      InpStartHourUTC  = 3;              // v3.26: trading window start hour (UTC; = end = all day)
-input int      InpEndHourUTC    = 4;              // v3.26: trading window end hour (UTC; 3-4 = the only
-                                                  //        window positive in both 2025 and 2026 backtests)
+input int      InpStartHourUTC  = 0;              // v3.26: trading window start hour (UTC; = end = all day)
+input int      InpEndHourUTC    = 0;              // v3.26: trading window end hour (UTC; 0-0 = all day,
+                                                  //        user decision 09-18: keep all-day trading)
 input bool     InpUseATRSL      = true;           // v3.26: ATR-based SL/TP (1.5x/3.0x M15 ATR); false = fixed $5/$10
 input double   InpATRSLMultiplier = 1.5;          // v3.26: SL = this x M15 ATR(14)
 input double   InpATRTPMultiplier = 3.0;          // v3.26: TP = this x M15 ATR(14) (2:1 RR)
@@ -265,7 +268,7 @@ g_dayStart = ServerDayStart();   // v3.11 FIX: server midnight, NOT the D1
          Print("Manual reset already used today - counters kept from history.");
    }
 
-Print("GoldBreakoutHunter v3.26 initialized. Magic: ", InpMagicNumber,
+Print("GoldBreakoutHunter v3.27 initialized. Magic: ", InpMagicNumber,
           ", Lot: ", InpLotSize, ", Channel: ", InpChannelPeriod,
           ", TrendTF: ", EnumToString(InpTrendTF),
           ", MaxTrades/Day: ", InpMaxTradesPerDay,
