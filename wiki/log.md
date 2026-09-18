@@ -5,6 +5,33 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-19] build | Layer 3 walk-forward OOS verdict — certified NO-GO (engine + independent audit)
+
+- **Frozen engine re-ran today using the read tool's byte-exact CSV path
+  (`scripts/layer3_walkforward.py` on the 744,518-bar
+  `xauusd-m1-bid` history)**: **35 OOS trades, OOS expectancy **−4.42
+  USD/trade** @ 0.01 lot (spread 0.30 baked in), **win rate 25.71%**, avg
+  W/L **1.24** (avg win +12.96 / avg loss −10.44). OOS expectancy < 0 →
+  **NO-GO**: stay at **0.01 lots, do NOT size up**; Layer 3 rejects the
+  edge as real.
+- **Independent audit now certifies the engine's SL/TP resolution**:
+  `scripts/layer3_verify_resolution.py` re-resolves every OOS trial with a
+  **second, deliberately different resolver** (forward high/low
+  first-touch scan, wilder ATR + EMA rebuilt independently from raw M1)
+  and compares to the engine's own arrow on the same M15 bar end-ts
+  alignment: **80/80 trials, 0 mismatches → ENGINE RESOLUTION OK**. The
+  engine's verdict is now backed by two independent resolutions, not just
+  its own loop.
+- **Honest figures note**: an earlier scratch recall quoted (−1.79/trade,
+  37.5% WR, 32 trades); the deterministic FROZEN engine re-run on the
+  full CSV gives (−4.42, 25.71%, 35). Direction identical (NO-GO both
+  ways); the going-forward reference is the full-CSV engine run above,
+  since that is what the frozen config + the audit actually certify.
+- **Layer 3 contract honored**: config frozen and pre-committed before
+  this run (never tuned on OOS); the 21-month horizon is untouched
+  out-of-sample; verdict is an honest **NO-GO** — we do NOT ship the
+  winner-take-all flip or size up.
+
 ## [2026-09-18] build | Layer 2 MC drawdown — real trade list, per-bot verdicts
 
 - **Pulled full MT5 deal history (10 days) via MCP** → extracted **44 bot
