@@ -5,6 +5,41 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-19] build | Layer 4 entry-gate walk-forward — certified NO-GO (frozen harness; gate-OFF no-drift audit faithful)
+
+- **Frozen Layer-4 harness ran today reusing the FROZEN Layer-3 engine
+  verbatim** (`scripts/layer4_entry_filter_walkforward.py` imports
+  `scripts/layer3_walkforward.py` — no engine edit, no re-derivation of the
+  trend/Donchian/ATR/SL/TP signal path) on the same 744,518-bar
+  `xauusd-m1-bid` OOS history. **No-drift audit passed first**: the gate-OFF
+  pass reproduced the certified Layer-3 baseline (35 OOS trades, E −4.42
+  USD/trade, WR 25.71%, RR 1.24) with **0 PnL mismatches → NO DRIFT OK —
+  harness faithful**, so this gate verdict is trustworthy (not a drifted
+  copy of the engine).
+- **The ONLY pre-specified Layer-4 gate pair** — frozen 2026-09-19 BEFORE
+  any Layer-4 OOS number existed, derived from the dated
+  [[Entry Quality Retrospective 2026-09-11]] (never tuned on OOS): **Gate A
+  min-break distance** (skip any Donchian break ≤ spread 0.30 pts — the
+  documented "marginal break after extended move" trap #5/#7) and **Gate B
+  one-entry-per-Donchian-20-level** (skip re-entry into the same 20-bar
+  channel level — the documented "re-entry decay" finding #4–#6). **Gated
+  OOS: 9 trades, E **−4.76, WR 22.22%, RR 1.26 (avg win +12.05 / avg loss
+  −9.57).
+- **Verdict under the Layer-4 guardrail (filtered E > 0 AND > baseline
+  −4.42)**: **9 < 30** AND **E −4.76 not > −4.42** → **NO-GO**: the entry
+  gate does **not** rescue the edge out-of-sample. **Stay 0.01 lots, do NOT
+  size up.** A filter that merely produces *different* trades — or collapses
+  the OOS sample below the trade-count gate — does NOT ship; that is the
+  whole Layer-4 contract (a filter must improve OOS over no-filter, never
+  differ for its own sake).
+- **Layer cascade now fully certified end-to-end**: Layer 1 sizing (fed by
+  Layer-3 OOS stats — negative OOS edge → stay 0.01, no size-up), Layer 2
+  Monte-Carlo drawdown (2026-09-18, per-bot verdicts), Layer 3 walk-forward
+  OOS (certified NO-GO + independent engine-resolution audit), Layer 4 entry
+  gates (certified NO-GO). **Every honest layer says the same thing: the
+  edge is not real; 0.01 lots and no sizing up is the disciplined ship
+  state.**
+
 ## [2026-09-19] build | Layer 3 walk-forward OOS verdict — certified NO-GO (engine + independent audit)
 
 - **Frozen engine re-ran today using the read tool's byte-exact CSV path
