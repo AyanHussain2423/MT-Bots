@@ -36,6 +36,13 @@ live. Any verdict that < 30 trades → automatically NO-GO (never greenlit).
 | Layer 3 — frozen breakout engine (trend-cont Donchian-20, EMA50, ATR SL/TP, 03:00 UTC hour window) | [[Quant Math Build Plan]] | **NO-GO** (certified 2026-09-19) | 35 trades, expectancy **−4.42** USD/trade, 25.71% WR, RR 1.24 — negative OOS ⇒ stay **0.01 lots, 0 Kelly, do NOT size up** |
 | Layer 4 — entry-filter (gate-A min-break + gate-B one-per-Donchian, frozen harness) | [[Layer 4 Pre-Commit Config]] | **NO-GO** (certified 2026-09-19) | 9 trades, expectancy **−4.76**, WR 22.22% — filter does NOT rescue edge; 9 < 30 ⇒ **NO-GO** |
 | Layer 5 — retest-confirmed breakout gate (break→retest→re-break, frozen harness) | [[Layer 5 Pre-Commit Config]] | **NO-GO** (certified 2026-09-19) | 20 trades, expectancy **−2.94**, WR 35.00%, RR 1.09 — improved vs baseline (−4.42) but still negative AND 20 < 30 ⇒ **NO-GO** |
+| Batch 1 C1 — UT Bot ATR trailing stop (always-in-market, reverse on signal; frozen config) | [[Strategy Search Batch 1 Pre-Commit]] | **GO** (certified 2026-09-19, split-sample PASS) | 698 trades, expectancy **+4.96**, WR 37.82%, RR 2.27 — split-sample: half1 +1.76 (369), half2 +5.53 (329) ⇒ both halves positive ⇒ **GO confirmed** |
+| Batch 1 C3 — Xaulgnition long-only momentum (US session, no Fridays; frozen config) | [[Strategy Search Batch 1 Pre-Commit]] | **GO** (certified 2026-09-19, split-sample PASS) | 357 trades, expectancy **+5.82**, WR 59.38%, RR 1.01 — split-sample: half1 +7.19 (176), half2 +2.74 (185) ⇒ both halves positive ⇒ **GO confirmed** |
+| Batch 1 C2 — Session range breakout (Asian range → London open; frozen config) | [[Strategy Search Batch 1 Pre-Commit]] | **NO-GO** (certified 2026-09-19) | 418 trades, expectancy **−0.93**, WR 33.25% — positive n but negative E ⇒ **NO-GO** |
+| Batch 1 C4 — EMA cross + ADX filter (frozen config) | [[Strategy Search Batch 1 Pre-Commit]] | **NO-GO** (certified 2026-09-19) | 1 trade, expectancy **−4.18** — 1 < 30 ⇒ **NO-GO** |
+| Batch 1 C5 — Bollinger mean reversion + RSI (frozen config) | [[Strategy Search Batch 1 Pre-Commit]] | **NO-GO** (certified 2026-09-19) | 2510 trades, expectancy **−0.32**, WR 49.80% — negative E ⇒ **NO-GO** |
+| Batch 1 C6 — Pullback-window breakout (frozen config) | [[Strategy Search Batch 1 Pre-Commit]] | **NO-GO** (certified 2026-09-19) | 0 resolved trades — no OOS trades ⇒ **NO-GO** |
+| Batch 1 C7 — Liquidity sweep (SMC wick-through + close-back; frozen config) | [[Strategy Search Batch 1 Pre-Commit]] | **NO-GO** (certified 2026-09-19) | 8809 trades, expectancy **−0.29**, WR 33.44% — negative E ⇒ **NO-GO** |
 
 ## Pending candidates (real, dated, still untested OOS)
 
@@ -55,8 +62,11 @@ harness (above) when **you** (the human) decide it's the one to trial.
 
 ## What "going forward and developing it" looks like (honestly)
 
-- **Today's state**: every tested layer says **NO-GO** → keep **0.01 lots,
-  do NOT size up.** That is the *output of the wiki*, not a mood.
+- **Today's state**: the frozen breakout engine family (L3/L4/L5) is NO-GO,
+  but **Batch 1 produced two split-sample-confirmed GO candidates** (C1 UT
+  Bot trailing stop +4.96, C3 Xaulgnition momentum +5.82). These are the
+  first positive-OOS strategies in the wiki — next step is a live demo trial
+  (0.01 lots) to confirm they behave in real time before any sizing up.
 - **Next 1 layer goal**: pick ONE pending candidate, **freeze its config in
   a dated pre-commit page BEFORE running it**, run it on the same frozen
   harness, publish both OOS numbers, verdict GO/NO-GO. Never two candidates

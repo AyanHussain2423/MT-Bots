@@ -142,3 +142,32 @@ close-back sweep, 2.0R, London/NY sessions).
   check passes (multiple-testing caveat above).
 - The 21-month horizon is one contiguous out-of-sample bench; nothing ships
   without Layer-3 WFO discipline already satisfied.
+
+---
+
+## Results (run 2026-09-19, one run per candidate, configs untouched)
+
+Harness: `scripts/strategy_search_batch1.py` on the frozen 744,518-bar M1
+bid history (M1→M15, spread 0.30, forward closed-bar resolution). Baseline
+= certified Layer-3 (−4.42).
+
+| Candidate | n | E/trade | WR | RR | Verdict |
+|---|---|---|---|---|---|
+| C1 UT Bot trailing stop | 698 | **+4.96** | 37.82% | 2.27 | **GO (provisional)** |
+| C2 Session range breakout | 418 | −0.93 | 33.25% | 1.78 | NO-GO |
+| C3 Xaulgnition momentum | 357 | **+5.82** | 59.38% | 1.01 | **GO (provisional)** |
+| C4 EMA cross + ADX | 1 | −4.18 | 0% | — | NO-GO (n < 30) |
+| C5 BB mean reversion | 2510 | −0.32 | 49.80% | 0.95 | NO-GO |
+| C6 Pullback-window breakout | 0 | — | — | — | NO-GO (no resolved trades) |
+| C7 Liquidity sweep | 8809 | −0.29 | 33.44% | 1.92 | NO-GO |
+
+### Split-sample robustness check (pass: n ≥ 30 AND E > 0 in BOTH halves)
+
+| Candidate | half1 | half2 | Result |
+|---|---|---|---|
+| C1 UT Bot trailing stop | +1.76 (369) | +5.53 (329) | **PASS — GO confirmed** |
+| C3 Xaulgnition momentum | +7.19 (176) | +2.74 (185) | **PASS — GO confirmed** |
+
+Both GOs survived the multiple-testing guardrail. They are candidates for a
+live 0.01-lot demo trial; nothing ships at larger size until real-time
+behavior confirms the OOS edge.

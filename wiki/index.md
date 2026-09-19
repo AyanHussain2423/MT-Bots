@@ -194,6 +194,11 @@ and strategy research. Every trade is ingested and linted.
   candidate: certified NO-GO verdicts (L3 −4.42, L4 −4.76, L5 −2.94) + the
   pending pool (ML filter, S/R, regime, Donchian width, Kelly+GARCH) with
   the frozen-harness contract each must pass before GO.
+- [[Strategy Search Batch 1 Pre-Commit]] — 7 frozen candidate configs
+  (UT Bot trailing stop, session range breakout, Xaulgnition momentum, EMA+ADX,
+  BB reversion, pullback-window, liquidity sweep) pre-registered 2026-09-19
+  BEFORE any OOS number; batch verdict: **C1 GO +4.96 (698 trades), C3 GO
+  +5.82 (357 trades)** — both split-sample confirmed; C2/C4/C5/C6/C7 NO-GO.
 - [[Layer 5 Pre-Commit Config]] — frozen retest-confirmed breakout gate
   (break→retest→re-break, RETEST_TOL 1.0·ATR, 24 h lookback) + certified
   NO-GO verdict: 20 OOS trades, E −2.94 — improved vs baseline but still

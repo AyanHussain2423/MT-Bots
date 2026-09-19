@@ -5,6 +5,42 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-19] build | Strategy Search Batch 1 — 7 frozen candidates tested; TWO GO (split-sample confirmed)
+
+- **User directive 2026-09-19**: "go through github / websites, make it,
+  test, find me one — keep finding." Researched GitHub + mql5/ctrader
+  sources, picked **7 distinct strategy families**, froze ALL configs in
+  [[Strategy Search Batch 1 Pre-Commit]] (committed `e301fc5`,
+  pushed both remotes) **BEFORE any OOS number existed** — same discipline
+  as Layers 3–5, but as a pre-registered batch (multiple-testing caveat
+  documented in the page).
+- **Harness**: `scripts/strategy_search_batch1.py` — all candidates on the
+  same frozen 744,518-bar M1 bid history, M1→M15 via the frozen engine's
+  `aggregate()`, spread 0.30, SL/TP forward-resolved on closed bars, no
+  lookahead, no open-trade credit. Baseline = certified Layer-3 (−4.42).
+- **Results (one run each, no tuning)**:
+  - **C1 UT Bot ATR trailing stop (always-in-market, reverse on signal):
+    698 trades, E +4.96, WR 37.82%, RR 2.27 → GO (provisional)**
+  - **C3 Xaulgnition long-only momentum (US session, no Fridays):
+    357 trades, E +5.82, WR 59.38%, RR 1.01 → GO (provisional)**
+  - C2 Session range breakout: 418 trades, E −0.93 → NO-GO
+  - C4 EMA cross + ADX: 1 trade, E −4.18 → NO-GO (n < 30)
+  - C5 BB mean reversion: 2510 trades, E −0.32 → NO-GO
+  - C6 Pullback-window breakout: 0 resolved trades → NO-GO
+  - C7 Liquidity sweep: 8809 trades, E −0.29 → NO-GO
+- **Split-sample robustness check** (`scripts/strategy_search_batch1_split.py`,
+  pass rule stated before running: n ≥ 30 AND E > 0 in BOTH halves):
+  - C1: half1 +1.76 (369 trades) / half2 +5.53 (329) → **PASS — GO confirmed**
+  - C3: half1 +7.19 (176) / half2 +2.74 (185) → **PASS — GO confirmed**
+- **Verdict**: first positive-OOS strategies in the wiki. Both are
+  **candidates for a live 0.01-lot demo trial** — they must behave in real
+  time before any sizing up. All other batch candidates certified NO-GO.
+- **Carried-forward insight**: trend-following with a trailing stop (C1) and
+  long-only momentum with a time exit (C3) both beat the breakout family —
+  the edge on this 21-month gold sample is in *letting winners run*, not in
+  entry filtering. Next: live demo trial of C1/C3 at 0.01 lots, and keep
+  hunting (batch 2) per the user directive.
+
 ## [2026-09-19] build | Layer 5 retest-confirmed breakout walk-forward — certified NO-GO (frozen harness; no-drift audit OK)
 
 - **Frozen Layer-5 harness ran today reusing the FROZEN Layer-3 engine
