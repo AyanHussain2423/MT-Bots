@@ -5,6 +5,24 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-19] resources | Strategy Resource Pack — verified links for the 6 pending candidates
+
+- User asked for ≥10 resources per pending candidate. Ran live searches for
+  all six categories; compiled **40+ verified links** (papers, repos,
+  studies) into [[Strategy Resource Pack 2026-09-19]], each tagged
+  **verified** (returned by this session's search) vs **user-pasted**
+  (from the user's own summary, not independently confirmed).
+- Highlights: S/R optimal-stopping literature (arXiv 1707.05253,
+  2607.08531, Springer Fin&Stoch 2026), regime HMM repos (strata-market,
+  RegimeSense, hidden-regime), Turtle/Donchian academic tests (UCT thesis,
+  JFI soybeans, AdTurtle exclusion zone), retest statistics (1,446-signal
+  study, IB retest NQ/ES), Kelly+GARCH papers (conformal Kelly, crash-aware
+  Kelly, generalized Kelly framework).
+- **Carried-forward insight**: the backtested Livermore result (PF 0.64
+  default → ~1.02 with stricter volume filter) is the cautionary tale —
+  resources are candidate inputs, NOT a GO. Every candidate still must pass
+  the frozen walk-forward OOS harness (≥30 trades, E > 0 AND > baseline).
+
 ## [2026-09-19] build | Layer 4 entry-gate walk-forward — certified NO-GO (frozen harness; gate-OFF no-drift audit faithful)
 
 - **Frozen Layer-4 harness ran today reusing the FROZEN Layer-3 engine

@@ -50,6 +50,10 @@ and strategy research. Every trade is ingested and linted.
 - [[Quant Resources — Risk Management]] — 9 resources (RiskLab,
   Market-Risk-Quant-Portfolio, FinRL_DeepSeek, dualrssm, CME handbook) for
   the risk layer.
+- [[Strategy Resource Pack 2026-09-19]] — verified links for the 6 pending
+  candidates (ML entry filter, S/R breakout, regime filter, Donchian width,
+  fresh-break/retest, Kelly+GARCH): 40+ papers, repos and studies, each
+  tagged verified vs user-pasted.
 - [[Quant Paper — Kelly Sizing 2309.09094]] — sizing strategies in volatile
   markets: VaR reduction, geometric-VaR/Kalman backtests, GARCH vol input.
 - [[Quant Paper — Kelly Lévy 2002.03448]] — Kelly from Bernoulli to Lévy
@@ -186,3 +190,7 @@ and strategy research. Every trade is ingested and linted.
   (44 bot trades, 10,000 shuffles): GBH fails the envelope (1.24% ruin,
   28% kill-switch hits, p95 DD 82.6%), BBH fits (0% ruin, p95 DD 34.4%);
   pooled Kelly is misleading (GHP's 3 wins fake the edge) — size per bot.
+- [[Strategy Candidate Register 2026-09-19]] — master list of every dated
+  candidate: certified NO-GO verdicts (L3 −4.42, L4 −4.76) + the pending
+  pool (ML filter, S/R, regime, Donchian width, fresh-break, Kelly+GARCH)
+  with the frozen-harness contract each must pass before GO.
