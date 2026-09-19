@@ -35,6 +35,7 @@ live. Any verdict that < 30 trades → automatically NO-GO (never greenlit).
 |---|---|---|---|
 | Layer 3 — frozen breakout engine (trend-cont Donchian-20, EMA50, ATR SL/TP, 03:00 UTC hour window) | [[Quant Math Build Plan]] | **NO-GO** (certified 2026-09-19) | 35 trades, expectancy **−4.42** USD/trade, 25.71% WR, RR 1.24 — negative OOS ⇒ stay **0.01 lots, 0 Kelly, do NOT size up** |
 | Layer 4 — entry-filter (gate-A min-break + gate-B one-per-Donchian, frozen harness) | [[Layer 4 Pre-Commit Config]] | **NO-GO** (certified 2026-09-19) | 9 trades, expectancy **−4.76**, WR 22.22% — filter does NOT rescue edge; 9 < 30 ⇒ **NO-GO** |
+| Layer 5 — retest-confirmed breakout gate (break→retest→re-break, frozen harness) | [[Layer 5 Pre-Commit Config]] | **NO-GO** (certified 2026-09-19) | 20 trades, expectancy **−2.94**, WR 35.00%, RR 1.09 — improved vs baseline (−4.42) but still negative AND 20 < 30 ⇒ **NO-GO** |
 
 ## Pending candidates (real, dated, still untested OOS)
 
@@ -44,7 +45,7 @@ harness (above) when **you** (the human) decide it's the one to trial.
 
 | Candidate | Home page | Notes |
 |---|---|---|
-| Entry-quality gate (magic-reentry decay) | [[Entry Quality Retrospective]] | Skip re-entries into the same move; fresh-break entries only. Dated finding; not yet OOS-verified. |
+| ~~Entry-quality gate (magic-reentry decay)~~ | [[Entry Quality Retrospective]] | **TESTED — certified NO-GO in both variants**: fresh-break-only = Layer-4 Gate B (9 trades, −4.76); retest-confirmed re-break = Layer-5 Gate C (20 trades, −2.94). Both improved nothing OOS. |
 | Hour-window variants | [[Hour Window Analysis]] | Other UTC hours; not yet OOS-verified (hour 03 currently certified NO-GO). |
 | ML / ML-regression entry filter | [[Quant Resources — Entry Filters]] | Needs walk-forward OOS validation per Layer-4 guardrail. |
 | Donchian channel-width filter (only trade ≥ spread-wide breaks) | [[Quant Resources — Entry Filters]] | The "marginal break after extended move" trap. |

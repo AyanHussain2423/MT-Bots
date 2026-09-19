@@ -191,6 +191,10 @@ and strategy research. Every trade is ingested and linted.
   28% kill-switch hits, p95 DD 82.6%), BBH fits (0% ruin, p95 DD 34.4%);
   pooled Kelly is misleading (GHP's 3 wins fake the edge) — size per bot.
 - [[Strategy Candidate Register 2026-09-19]] — master list of every dated
-  candidate: certified NO-GO verdicts (L3 −4.42, L4 −4.76) + the pending
-  pool (ML filter, S/R, regime, Donchian width, fresh-break, Kelly+GARCH)
-  with the frozen-harness contract each must pass before GO.
+  candidate: certified NO-GO verdicts (L3 −4.42, L4 −4.76, L5 −2.94) + the
+  pending pool (ML filter, S/R, regime, Donchian width, Kelly+GARCH) with
+  the frozen-harness contract each must pass before GO.
+- [[Layer 5 Pre-Commit Config]] — frozen retest-confirmed breakout gate
+  (break→retest→re-break, RETEST_TOL 1.0·ATR, 24 h lookback) + certified
+  NO-GO verdict: 20 OOS trades, E −2.94 — improved vs baseline but still
+  negative and < 30 trades; stay 0.01 lots.

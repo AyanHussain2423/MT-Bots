@@ -5,6 +5,39 @@ wiki. Newest entries go at the top.
 
 ---
 
+## [2026-09-19] build | Layer 5 retest-confirmed breakout walk-forward — certified NO-GO (frozen harness; no-drift audit OK)
+
+- **Frozen Layer-5 harness ran today reusing the FROZEN Layer-3 engine
+  verbatim** (`scripts/layer5_fresh_break_retest_walkforward.py` imports
+  `scripts/layer3_walkforward.py` — no engine edit) on the same 744,518-bar
+  `xauusd-m1-bid` OOS history. **No-drift audit passed**: the gate-OFF pass
+  reproduced the certified Layer-3 baseline (35 OOS trades, E −4.42, WR
+  25.71%) with **0 PnL mismatches → NO DRIFT OK — harness faithful**.
+- **The ONLY pre-specified Layer-5 gate** — frozen 2026-09-19 in
+  [[Layer 5 Pre-Commit Config]] BEFORE any Layer-5 OOS number existed,
+  derived from the dated [[Entry Quality Retrospective 2026-09-11]] +
+  [[Strategy Resource Pack 2026-09-19]] retest statistics (75.5% of virgin
+  breakouts fail; losers die ~2h median vs winners ~11h): **Gate C
+  retest-confirmed breakout** — keep a Donchian-20 break ONLY if the same
+  level (within 1.0·ATR) was broken in the prior 24 h AND price retraced
+  back to it (break → retest → re-break); virgin breaks are skipped.
+- **Gated OOS: 20 trades, E −2.94, WR 35.00%, RR 1.09 (avg win +11.80 /
+  avg loss −10.87).** The retest gate DID improve the sample vs the
+  unfiltered baseline (−4.42 → −2.94, WR 25.71% → 35.00%) — the first
+  filter to move the needle in the right direction — but the edge is still
+  **negative** and the sample **20 < 30**.
+- **Verdict under the Layer-5 guardrail (filtered E > 0 AND > baseline
+  −4.42, ≥ 30 trades)**: **NO-GO** — the retest gate does not rescue the
+  OOS edge. **Stay 0.01 lots, do NOT size up.** The entry-quality family is
+  now fully certified: fresh-break-only (L4 Gate B) and retest-confirmed
+  (L5 Gate C) are both NO-GO.
+- **Carried-forward insight**: retest confirmation is the first gate that
+  improved OOS expectancy and win rate simultaneously — if a future
+  candidate (e.g. regime filter or Donchian width) is layered ON TOP of the
+  retest gate, the 20-trade sample is the honest starting point, not the
+  baseline. But per the one-trial rule, that is a NEW dated candidate, not
+  a re-run of this one.
+
 ## [2026-09-19] resources | Strategy Resource Pack — verified links for the 6 pending candidates
 
 - User asked for ≥10 resources per pending candidate. Ran live searches for
