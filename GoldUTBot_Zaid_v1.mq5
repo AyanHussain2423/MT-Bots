@@ -46,7 +46,7 @@ CTrade  trade;
 datetime g_lastBarTime = 0;
 double  g_stop = 0.0;        // current trailing stop level
 int     g_side = 0;          // 1 = long, -1 = short, 0 = flat (state machine)
-double  g_dayStart = 0;
+datetime g_dayStart = 0;
 double  g_dayPnL = 0.0;
 bool    g_killSwitch = false;
 

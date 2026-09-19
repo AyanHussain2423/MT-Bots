@@ -53,7 +53,7 @@ input double   InpDailyLossLimit   = 0.0;         // Kill switch: daily loss lim
 CTrade  trade;
 int     g_emaHandle = INVALID_HANDLE;
 datetime g_lastBarTime = 0;
-double  g_dayStart = 0;
+datetime g_dayStart = 0;
 double  g_dayPnL = 0.0;
 bool    g_killSwitch = false;
 
@@ -249,7 +249,9 @@ void OnTick()
    double l1 = iLow(_Symbol, PERIOD_M15, 1);
    double ph = iHigh(_Symbol, PERIOD_M15, 2);   // previous bar high
 
-   double ema = iMA(_Symbol, PERIOD_M15, InpEMAPeriod, 0, MODE_EMA, PRICE_CLOSE, 1);
+   double emaBuf[];
+   if(CopyBuffer(g_emaHandle, 0, 1, 1, emaBuf) < 1) return;
+   double ema = emaBuf[0];
    double atr = WilderATR(_Symbol, PERIOD_M15, InpATRPeriod, 1);
    if(ema <= 0.0 || atr <= 0.0) return;
 
